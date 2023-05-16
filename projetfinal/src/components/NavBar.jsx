@@ -6,7 +6,7 @@ function NavBar() {
             <nav className="navbar navbar-expand-sm navbar-white bg-white">
             <div className="container-fluid">
                 <div className="navbar-brand justify-content-end">
-                    <img src={require("../assets/animals.png")} alt="logo" />
+                    <img src="assets/animals.png" alt="logo" />
                 </div>
                 <a className="navbar-brand" href="/">Patoûne-moi</a>
                 
