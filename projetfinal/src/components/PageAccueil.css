@@ -1,0 +1,12 @@
+.pageaccueil-container {
+  width: 100%;
+  margin: 100px 20px;
+}
+
+.pageaccueil-titre-container {
+  margin: 100px 0;
+}
+
+.pageaccueil-titre {
+  font-size: 3.5rem;
+}
