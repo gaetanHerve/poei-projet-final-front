@@ -1,0 +1,66 @@
+.card-principal {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.carte,
+.card-image-animal {
+  border-radius: 10px 10px 0 0;
+}
+
+.carte-principal {
+  background-color: white;
+  border-radius: 10px;
+  width: 370px;
+}
+
+.card-image-animal {
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-container-text {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-nom {
+  padding: 15px 0 10px 0;
+  font-size: 2rem;
+}
+
+.card-information {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-information-gender,
+.card-information-age {
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.card-information-logo {
+  width: 35px;
+  height: 35px;
+  margin: 0 5px;
+}
+
+.card-information-text {
+  margin-top: auto;
+  font-size: 1.1rem;
+  margin: 0 5px;
+}
+
+.card-text-description {
+  margin: 20px;
+  text-align: start;
+}
+
+.card-button {
+  margin-bottom: auto;
+}
