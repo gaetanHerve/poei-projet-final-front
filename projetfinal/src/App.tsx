@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageTest from "./components/PageTest";
 import NavBar from "./components/NavBar";
-import TestCarousel from "./components/TestCarousel";
 import TestNavbarFooter from "./components/TestNavbarFooter";
 import Footer from "./components/Footer";
 import PageAccueil from "./components/PageAccueil";

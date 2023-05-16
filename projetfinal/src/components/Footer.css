@@ -1,26 +1,53 @@
 .footer-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-  }
-  
-  .footer-links {
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-links a {
-    margin-right: 10px;
-  }
-  
-  .footer-links img {
-    width: 50px;
-  }
+	background-color: var(--color-title);
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
 
-  .card-body {
-    text-align: left;
-  }
+.title-footer {
+	color: var(--color-text-description);
+	text-align: left;
+	margin-top: 15px;
+}
+
+.subtitle-footer {
+	color: var(--color-text-description);
+	text-align: left;
+	margin-top: 20px;
+}
+
+.text-footer {
+	color: var(--color-text-description);
+	text-align: left;
+	margin-top: 20px;
+}
+
+.footer-text-container {
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.container-link {
+	margin-right: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.links {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.button-place {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
