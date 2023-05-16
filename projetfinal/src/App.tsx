@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageTest from './components/PageTest';
 import PageAccueil from './components/PageAccueil';
 import NavBar from './components/NavBar';
+import TestCarousel from './components/TestCarousel';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="pagetest" element={<PageTest/>} />
 
-          {/* <Route path="/" element={<PageAccueil/>} /> */}
+          <Route path="/" element={<PageAccueil/>} />
         </Routes>
       </BrowserRouter>
     </div>

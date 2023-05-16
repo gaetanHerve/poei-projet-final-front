@@ -1,0 +1,49 @@
+.entete-section {
+  display: flex;
+  text-align: start;
+  width: 100vw;
+  height: 90vh;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.entete-text-section {
+  padding-left: 10%;
+  padding-top: 10%;
+  width: 60%;
+}
+
+.entete-titre {
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 5.5rem;
+  border-left: 10px solid var(--color-title);
+  padding-left: 30px;
+  color: var(--color-title);
+}
+
+.entete-description {
+  color: var(--color-text-description);
+  font-size: 1.5rem;
+  margin: 50px 0;
+}
+
+.entete-pattounes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.entete-paw {
+  position: absolute;
+  left: 0;
+  bottom: 5vh;
+  transform: rotate(25deg);
+  opacity: 0.1;
+  z-index: -1;
+}
