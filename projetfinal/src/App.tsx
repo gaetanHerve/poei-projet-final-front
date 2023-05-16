@@ -8,20 +8,20 @@ import Footer from "./components/Footer";
 import PageAccueil from "./components/PageAccueil";
 
 function App() {
-	return (
-		<div className="App">
-			<NavBar></NavBar>
-			<BrowserRouter>
-				<Routes>
-					<Route path="pagetest" element={<PageTest />} />
+  return (
+    <div className="App">
+      <NavBar></NavBar>
+      <BrowserRouter>
+        <Routes>
+          <Route path="pagetest" element={<PageTest />} />
 
-					<Route path="/" element={<PageAccueil />} />
-					<Route path="testfooter" element={<TestNavbarFooter />} />
-				</Routes>
-			</BrowserRouter>
-			<Footer></Footer>
-		</div>
-	);
+          <Route path="/" element={<PageAccueil />} />
+          <Route path="testfooter" element={<TestNavbarFooter />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer></Footer>
+    </div>
+  );
 }
 
 export default App;
