@@ -7,6 +7,7 @@ import TestCarousel from "./components/TestCarousel";
 import TestNavbarFooter from "./components/TestNavbarFooter";
 import Footer from "./components/Footer";
 import PageAccueil from "./components/PageAccueil";
+import PageCompagnons from "./components/PageCompagnons";
 
 function App() {
   return (
@@ -15,12 +16,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="pagetest" element={<PageTest />} />
+          <Route path="noscompagnons" element={<PageCompagnons />} />
 
           <Route path="/" element={<PageAccueil />} />
           <Route path="testfooter" element={<TestNavbarFooter />} />
         </Routes>
       </BrowserRouter>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

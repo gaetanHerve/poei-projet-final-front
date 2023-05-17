@@ -1,0 +1,22 @@
+.pagecompagnons-container {
+  width: 85%;
+  margin: 100px auto;
+}
+
+.pagecompagnons-titre-container {
+  margin: 100px 0;
+}
+
+.pagecompagnons-titre {
+  font-size: 3.5rem;
+}
+
+.pagecompagnons-titre::after {
+  content: "";
+  display: block;
+  width: 10.6rem;
+  height: 5px;
+  border-radius: 3px;
+  margin: 20px auto;
+  background-color: var(--colorSecondeGreen);
+}

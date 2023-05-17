@@ -8,7 +8,7 @@ function CardComponent({ animalList }) {
     <div className="card-principal">
       {animalList.length > 0 &&
         animalList.map((animal, index) => (
-          <div key={index} className="carte">
+          <div key={animal.id} className="carte">
             <div className="shadow carte-principal">
               <img
                 src={`assets/${animal.urlImage}`}

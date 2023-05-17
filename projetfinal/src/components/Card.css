@@ -1,11 +1,16 @@
 .card-principal {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .carte,
 .card-image-animal {
   border-radius: 10px 10px 0 0;
+}
+
+.carte {
+  margin: 20px 6px;
 }
 
 .carte-principal {
