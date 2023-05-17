@@ -31,42 +31,35 @@ function DescriptionComponent() {
 	return (
 		<div className="description-card-container">
 			<div className="description-container">
-				<h4 className="description-title">
-					Je m'appelle {animal.nom}
-					<br /> Je suis un {animal.espece} fidèle
-				</h4>
+				<h4 className="description-title">Je suis {animal.nom}</h4>
 				<div className="description-texte">
-					<div className="description-logo">
-						<img src="assets/gender.png" style={{ width: 30 }} alt="gender" />{" "}
-						{animal.sexe}
+					<div className="Container-unprice">
+						<div className="description-logo">
+							<img className="logo-css" src="assets/gender.png" alt="gender" />
+							<img
+								className="logo-css"
+								src="assets/calendar.png"
+								alt="calendrier"
+							/>
+							<img className="logo-css" src="assets/poids.png" alt="poids" />
+							<img
+								className="logo-css"
+								src="assets/endroit48.png"
+								alt="endroit"
+							/>
+						</div>
+						<div className="decrip-texte">
+							<div className="texte-css">{animal.sexe}</div>
+							<div className="texte-css">{animal.age} an(s)</div>
+							<div className="texte-css">{animal.poids} kg</div>
+							<div className="texte-css">{animal.endroit}</div>
+						</div>
 					</div>
-
-					<div className="description-logo">
-						<img
-							src="assets/calendar.png"
-							style={{ width: 30 }}
-							alt="calendrier"
-						/>{" "}
-						{animal.age} an(s)
-					</div>
-					<div className="description-logo">
-						<img src="assets/poids.png" style={{ width: 30 }} alt="poids" />{" "}
-						{animal.poids}
-					</div>
-					<div className="description-logo">
-						<img
-							src="assets/endroit48.png"
-							style={{ width: 30 }}
-							alt="endroit"
-						/>{" "}
-						{animal.endroit}
-					</div>
-
 					<div className="decription-prix">
 						<div>
-							<img src="assets/prix.png" style={{ width: 30 }} alt="€" />{" "}
-							{animal.prix}
+							<img className="logo-css-price" src="assets/prix.png" alt="€" />
 						</div>
+						<div className="texte-css"> {animal.prix}</div>
 					</div>
 				</div>
 			</div>
