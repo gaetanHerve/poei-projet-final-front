@@ -99,7 +99,6 @@ function PageCompagnons() {
       <div className="pagecompagnons-titre-container">
         <h1 className="pagecompagnons-titre">Nos Compagnons</h1>
       </div>
-
       <TriComponent tableauAnimal={animals}></TriComponent>
     </div>
   );
