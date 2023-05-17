@@ -8,7 +8,7 @@ function CardComponent({ animalList }) {
     <div className="card-principal">
       {animalList.length > 0 &&
         animalList.map((animal, index) => (
-          <div key={index} className="carte">
+          <div key={animal.id} className="carte">
             <div className="shadow carte-principal">
               <img
                 src={`assets/${animal.urlImage}`}
@@ -31,6 +31,15 @@ function CardComponent({ animalList }) {
                       src="assets/calendar.png"
                     />
                     <p className="card-information-text">{animal.age} ans</p>
+                  </div>
+                  <div className="card-information-prix">
+                    <img
+                      className="card-information-logo"
+                      src="assets/prix.png"
+                    />
+                    <p className="card-information-text card-information-text-prix">
+                      {animal.prix} €
+                    </p>
                   </div>
                 </div>
                 <p className="card-text-description">{`${animal.description.substring(

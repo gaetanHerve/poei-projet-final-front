@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Animal } from "./Animal";
-import Entete from "./Entete";
 import CardComponent from "./CardComponent";
-import "./PageAccueil.css";
-import CompagnyDescription from "./CompagnyDescription";
+import "./PageCompagnons.css";
+import TriComponent from "./TriComponent";
 
-function PageAccueil() {
+function PageCompagnons() {
   // const [animals, setAnimals] = useState<(Animal[])>([]);
   // useEffect(() => {
-  //     fetch('http://localhost:8080/site/animal').then((res) => res.json()).then(data => setAnimals(data));
+  //     fetch('http://localhost:8080/patoune-moi/animals').then((res) => res.json()).then(data => setAnimals(data));
   // }, [])
+
   const animal1 = new Animal();
   animal1.id = 1;
   animal1.nom = "Chat1";
@@ -79,24 +79,29 @@ function PageAccueil() {
   animal5.prix = 40;
   animal5.description = "Pour rencontrer Félix ou vous ";
 
-  const animals = [animal1, animal2, animal3, animal4, animal5];
+  const animal6 = new Animal();
+  animal6.id = 6;
+  animal6.nom = "Chat6";
+  animal6.espece = "chien";
+  animal6.race = "tatac";
+  animal6.age = 15;
+  animal6.poids = 12.5;
+  animal6.sexe = "Femelle";
+  animal6.endroit = "Paris";
+  animal6.urlImage = "chien2.jpg";
+  animal6.prix = 50;
+  animal6.description = "Pour rencontrer Félix ou vous ";
 
-  const animalList = animals.slice(-4);
+  const animals = [animal1, animal2, animal3, animal4, animal5, animal6];
 
   return (
-    <>
-      <Entete></Entete>
-
-      <div className="pageaccueil-container">
-        <div className="pageaccueil-titre-container">
-          <h1 className="pageaccueil-titre">Les derniers arrivants</h1>
-        </div>
-        <CardComponent animalList={animalList}></CardComponent>
+    <div className="pagecompagnons-container">
+      <div className="pagecompagnons-titre-container">
+        <h1 className="pagecompagnons-titre">Nos Compagnons</h1>
       </div>
-
-      <CompagnyDescription></CompagnyDescription>
-    </>
+      <TriComponent tableauAnimal={animals}></TriComponent>
+    </div>
   );
 }
 
-export default PageAccueil;
+export default PageCompagnons;
