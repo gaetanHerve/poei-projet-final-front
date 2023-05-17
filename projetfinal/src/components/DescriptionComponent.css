@@ -1,0 +1,24 @@
+.description-container {
+	background-color: var(--colorBackground);
+	border: 6px groove var(--color-text-description);
+	padding: 24px;
+	margin: 15px 790px;
+}
+
+.description-title {
+	margin-bottom: 10px;
+}
+
+.decription-prix {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: row;
+}
+
+.description-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
