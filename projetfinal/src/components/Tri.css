@@ -1,0 +1,37 @@
+.tri-container {
+  /* background-color: var(--color-text-description); */
+  padding: 10px 50px;
+  margin-bottom: 50px;
+  /* color: white; */
+}
+
+.tri-container-button {
+  border: var(--color-text-description) thick double;
+  border-radius: 5px;
+  height: 120px;
+  margin: 20px 0;
+}
+
+.tri-button-radio-p {
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: var(--colorFistGreen);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: none;
+}
+
+.tri-button-radio:checked + .tri-button-radio-p {
+  background-color: var(--colorSecondeGreen) !important;
+}
+
+.tri-button-radio {
+  display: none;
+}
+
+.tri-card {
+  width: 85%;
+  margin: 70px auto;
+}

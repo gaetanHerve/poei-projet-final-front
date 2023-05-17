@@ -23,8 +23,8 @@ function NavBar() {
           <div className="collapse navbar-collapse" id="mynavbar">
             <ul className="navbar-nav me-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  Animaux en adoption<span className="sr-only"></span>
+                <a className="nav-link" href="/noscompagnons">
+                  Nos Compagnons<span className="sr-only"></span>
                 </a>
               </li>
               <li className="nav-item">
