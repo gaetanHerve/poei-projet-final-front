@@ -6,24 +6,26 @@ import NavBar from "./components/NavBar";
 import TestNavbarFooter from "./components/TestNavbarFooter";
 import Footer from "./components/Footer";
 import PageAccueil from "./components/PageAccueil";
+import PageCompagnons from "./components/PageCompagnons";
 import PageVueCompagnon from "./components/PageVueCompagnon";
 
 function App() {
-	return (
-		<div className="App">
-			<NavBar></NavBar>
-			<BrowserRouter>
-				<Routes>
-					<Route path="pagetest" element={<PageTest />} />
+  return (
+    <div className="App">
+      <NavBar></NavBar>
+      <BrowserRouter>
+        <Routes>
+          <Route path="pagetest" element={<PageTest />} />
 
-					<Route path="/" element={<PageAccueil />} />
-					<Route path="testfooter" element={<TestNavbarFooter />} />
-					<Route path="description" element={<PageVueCompagnon />} />
-				</Routes>
-			</BrowserRouter>
-			<Footer></Footer>
-		</div>
-	);
+          <Route path="/" element={<PageAccueil />} />
+          <Route path="noscompagnons" element={<PageCompagnons />} />
+          <Route path="testfooter" element={<TestNavbarFooter />} />
+          <Route path="description" element={<PageVueCompagnon />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer></Footer>
+    </div>
+  );
 }
 
 export default App;

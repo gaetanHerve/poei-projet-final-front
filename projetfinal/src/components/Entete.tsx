@@ -19,7 +19,7 @@ function Entete() {
           Patoûne-moi vous aide à trouver l'animal qui vous correspond.
         </p>
         <ButtonComponent
-          lien="/"
+          lien="/noscompagnons"
           text="J'adopte"
           handleOnClick={() => {}}
         ></ButtonComponent>

@@ -10,6 +10,16 @@
   font-size: 3.5rem;
 }
 
+.compagnydescription-titre::after {
+  content: "";
+  display: block;
+  width: 10.6rem;
+  height: 5px;
+  border-radius: 3px;
+  margin: 20px auto;
+  background-color: var(--colorBackground);
+}
+
 .compagnydescription-text {
   width: 700px;
   margin: 50px auto;
