@@ -1,6 +1,6 @@
 .description-container {
 	background-color: var(--colorBackground);
-	border: 6px groove var(--color-text-description);
+	border: 6px double var(--color-text-description);
 	padding: 24px;
 	margin: 15px 790px;
 }
@@ -10,15 +10,37 @@
 }
 
 .decription-prix {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: row;
+	display: flex;
+	justify-content: center;
 }
 
 .description-logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
+	display: flex;
+	flex-direction: column;
+}
+
+.decrip-texte {
+	display: flex;
+	flex-direction: column;
+}
+
+.Container-unprice {
+	display: flex;
+	justify-content: space-around;
+}
+
+.logo-css {
+	margin-top: 10px;
+	width: 30px;
+}
+
+.texte-css {
+	margin-top: 10px;
+	height: 30px;
+}
+
+.logo-css-price {
+	margin-right: 30px;
+	margin-top: 10px;
+	width: 30px;
 }
