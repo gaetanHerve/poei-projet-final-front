@@ -43,7 +43,8 @@
 }
 
 .card-information-gender,
-.card-information-age {
+.card-information-age,
+.card-information-prix {
   display: flex;
   height: 60px;
   align-items: center;
@@ -68,4 +69,10 @@
 
 .card-button {
   margin-bottom: auto;
+}
+
+.card-information-text-prix {
+  font-weight: bold;
+  font-size: x-large;
+  color: var(--colorFistGreen);
 }

@@ -32,6 +32,15 @@ function CardComponent({ animalList }) {
                     />
                     <p className="card-information-text">{animal.age} ans</p>
                   </div>
+                  <div className="card-information-prix">
+                    <img
+                      className="card-information-logo"
+                      src="assets/prix.png"
+                    />
+                    <p className="card-information-text card-information-text-prix">
+                      {animal.prix} €
+                    </p>
+                  </div>
                 </div>
                 <p className="card-text-description">{`${animal.description.substring(
                   0,
