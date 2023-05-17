@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import TestNavbarFooter from "./components/TestNavbarFooter";
 import Footer from "./components/Footer";
 import PageAccueil from "./components/PageAccueil";
+import PageConnexion from "./components/PageConnexion";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <NavBar></NavBar>
       <BrowserRouter>
         <Routes>
+          <Route path="connexion" element={<PageConnexion />} />
           <Route path="pagetest" element={<PageTest />} />
 
           <Route path="/" element={<PageAccueil />} />
