@@ -3,13 +3,10 @@ import "./PageAccueil.css";
 import "./Button.css";
 import Personne from '../models/Personne'
 import { useNavigate } from "react-router-dom";
-import Complement from "../models/ComplementPersonne";
 
 
 function PageCreationUtilisateur() {
-  const generateId = () => { return Math.floor(Math.random()*10000 + 1); }
   const navigate = useNavigate();
-  const [cnxError, setCnxError] = useState("");
   const [personne, setPersonne] = useState<Personne>({...new Personne(), id: 0, admin: false});
 
   const requestOptions = {
@@ -17,9 +14,7 @@ function PageCreationUtilisateur() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(personne)
   };
-
   
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(personne);
@@ -29,13 +24,8 @@ function PageCreationUtilisateur() {
       if (response.ok) {
         console.log("personne created");
         alert(`Bienvenue ${personne.prenom}, votre compte à été créé avec succès`);
+        navigate('/');
       }
-    })
-    .then( data => {
-      // console.log("personne created");
-      // sessionStorage.setItem("utilisateur", JSON.stringify(data));
-      // console.log(sessionStorage.getItem("utilisateur"));
-      // navigate("/");
     })
     .catch( error => {
       console.log("error", error);
@@ -44,18 +34,13 @@ function PageCreationUtilisateur() {
 
   return (
     <div>
-      { cnxError !== "" &&
-        
-        <div id="cnxError" className="m-5 text-danger">
-          {cnxError}
-        </div>
-      }
       <div className="card-principal m-5">
         <div className="carte">
           <div className="shadow carte-principal">
-            <div className="card-header">Créer un compte</div>
+            <div className="card-header"><h3>Créer un compte</h3></div>
             <form onSubmit={handleSubmit} className="mt-3">
               <div className="m-3">
+                <label htmlFor="nom">Nom :</label>
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -66,6 +51,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
+                <label htmlFor="prenom">Prénom :</label>
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -76,6 +62,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
+                <label htmlFor="adresse">Adresse :</label>
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -86,6 +73,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
+                <label htmlFor="telephone">Téléphone :</label>
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -96,8 +84,9 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
+                <label htmlFor="informations">Informations :</label>
                 <input
-                  type="textare"
+                  type="textarea"
                   className="form-control mt-3"
                   id="informations"
                   placeholder="Informations"
@@ -106,6 +95,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
               <div className="m-3">
+                <label htmlFor="password">Mot de passe :</label>
                 <input
                   type="text"
                   className="form-control"
