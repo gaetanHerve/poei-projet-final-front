@@ -32,96 +32,104 @@ function TriComponent({ tableauAnimal }) {
     <>
       <div className="tri-container">
         <div className="tri-container-button">
-          <h4>Espece</h4>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="chat"
-              // name="espece"
-              checked={filters.espece === "chat"}
-              onChange={() => updateFilters("espece", "chat")}
-            />
-            <p className="tri-button-radio-p">Chat</p>
-          </label>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="chien"
-              // name="espece"
-              checked={filters.espece === "chien"}
-              onChange={() => updateFilters("espece", "chien")}
-            />
-            <p className="tri-button-radio-p">Chien</p>
-          </label>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="all"
-              // name="espece"
-              checked={filters.espece === "all"}
-              onChange={() => updateFilters("espece", "all")}
-            />
-            <p className="tri-button-radio-p">Tous</p>
-          </label>
+          <h4>Espèce</h4>
+          <div>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="chat"
+                // name="espece"
+                checked={filters.espece === "chat"}
+                onChange={() => updateFilters("espece", "chat")}
+              />
+              <p className="tri-button-radio-p">Chat</p>
+            </label>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="chien"
+                // name="espece"
+                checked={filters.espece === "chien"}
+                onChange={() => updateFilters("espece", "chien")}
+              />
+              <p className="tri-button-radio-p">Chien</p>
+            </label>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="all"
+                // name="espece"
+                checked={filters.espece === "all"}
+                onChange={() => updateFilters("espece", "all")}
+              />
+              <p className="tri-button-radio-p">Tous</p>
+            </label>
+          </div>
         </div>
         <div className="tri-container-button">
           <h4>Sexe</h4>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="Male"
-              // name="sexe"
-              checked={filters.sexe === "Male"}
-              onChange={() => updateFilters("sexe", "Male")}
-            />
-            <p className="tri-button-radio-p">Mâle</p>
-          </label>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="Femelle"
-              // name="sexe"
-              checked={filters.sexe === "Femelle"}
-              onChange={() => updateFilters("sexe", "Femelle")}
-            />
-            <p className="tri-button-radio-p">Femelle</p>
-          </label>
-          <label className="tri-button-radio-label">
-            <input
-              className="tri-button-radio"
-              type="radio"
-              value="all"
-              // name="sexe"
-              checked={filters.sexe === "all"}
-              onChange={() => updateFilters("sexe", "all")}
-            />
-            <p className="tri-button-radio-p">Tous</p>
-          </label>
+          <div>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="Male"
+                // name="sexe"
+                checked={filters.sexe === "Male"}
+                onChange={() => updateFilters("sexe", "Male")}
+              />
+              <p className="tri-button-radio-p">Mâle</p>
+            </label>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="Femelle"
+                // name="sexe"
+                checked={filters.sexe === "Femelle"}
+                onChange={() => updateFilters("sexe", "Femelle")}
+              />
+              <p className="tri-button-radio-p">Femelle</p>
+            </label>
+            <label className="tri-button-radio-label">
+              <input
+                className="tri-button-radio"
+                type="radio"
+                value="all"
+                // name="sexe"
+                checked={filters.sexe === "all"}
+                onChange={() => updateFilters("sexe", "all")}
+              />
+              <p className="tri-button-radio-p">Tous</p>
+            </label>
+          </div>
         </div>
 
         <div className="tri-container-button">
           <h4>Prix</h4>
-          <label>
-            Minimum :
-            <input
-              type="number"
-              value={filters.minPrix}
-              onChange={(e) => updateFilters("minPrix", e.target.value)}
-            />
-          </label>
-          <label>
-            Maximum :
-            <input
-              type="number"
-              value={filters.maxPrix}
-              onChange={(e) => updateFilters("maxPrix", e.target.value)}
-            />
-          </label>
+          <div>
+            <label>
+              Minimum :
+              <input
+                className="tri-button-number"
+                type="number"
+                value={filters.minPrix}
+                onChange={(e) => updateFilters("minPrix", e.target.value)}
+              />
+            </label>
+            <label>
+              Maximum :
+              <input
+                className="tri-button-number"
+                type="number"
+                value={filters.maxPrix}
+                onChange={(e) => updateFilters("maxPrix", e.target.value)}
+              />
+            </label>
+          </div>
         </div>
       </div>
       <div className="tri-card">
