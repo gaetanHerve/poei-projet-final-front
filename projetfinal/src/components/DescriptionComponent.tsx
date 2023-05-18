@@ -34,7 +34,7 @@ function DescriptionComponent() {
 		<div className="description-card-container">
 			<div className="description-container">
 				<div className="frame-container">
-					<div className="frame-general-css-a">
+					<div className="frame-general-css-title">
 						<h4 className="description-title">{animal.nom}</h4>
 					</div>
 				</div>

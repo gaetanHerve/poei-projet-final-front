@@ -3,7 +3,8 @@
 	border: thick double var(--color-text-description);
 	border-radius: 5px;
 	padding: 24px;
-	margin: 15px 790px;
+	margin: 15px;
+	width: 75vh;
 }
 
 .description-title {
@@ -58,8 +59,8 @@
 	border-radius: 20px;
 	border: 5px;
 	color: var(--colorBackground);
-	width: 17%;
-	height: 40px;
+	width: 50vh;
+	height: 5vh;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
@@ -72,10 +73,24 @@
 	border-radius: 20px;
 	border: 5px;
 	color: var(--colorBackground);
-	width: 100%;
-	height: 40px;
+	width: 50vh;
+	height: 5vh;
 	justify-content: center;
 	align-items: flex-start;
+	margin-bottom: 20px;
+}
+
+.frame-general-css-title {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	background-color: var(--color-title);
+	border-radius: 20px;
+	border: 5px;
+	color: var(--colorBackground);
+	width: 40vh;
+	height: 8vh;
+	justify-content: center;
 	margin-bottom: 20px;
 }
 
@@ -83,4 +98,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.description-card-container {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
 }

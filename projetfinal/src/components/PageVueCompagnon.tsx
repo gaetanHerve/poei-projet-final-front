@@ -5,8 +5,10 @@ import "./PageVueCompagnon.css";
 
 function PageVueCompagnon() {
 	return (
-		<div className="container-general">
-			<DescriptionComponent></DescriptionComponent>
+		<div>
+			<div className="container-general-page">
+				<DescriptionComponent></DescriptionComponent>
+			</div>
 		</div>
 	);
 }
