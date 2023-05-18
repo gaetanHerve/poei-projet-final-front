@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./PageAccueil.css";
 import "./DescriptionComponent.css";
+import "./Button.css";
 import { useParams } from "react-router-dom";
 import { Animal } from "./Animal";
+import ButtonComponent from "./ButtonComponent";
 
 function DescriptionComponent() {
 	const { id } = useParams();
@@ -31,7 +33,11 @@ function DescriptionComponent() {
 	return (
 		<div className="description-card-container">
 			<div className="description-container">
-				<h4 className="description-title">Je suis {animal.nom}</h4>
+				<div className="frame-container">
+					<div className="frame-general-css-a">
+						<h4 className="description-title">{animal.nom}</h4>
+					</div>
+				</div>
 				<div className="description-texte">
 					<div className="Container-unprice">
 						<div className="description-logo">
@@ -61,13 +67,28 @@ function DescriptionComponent() {
 						</div>
 						<div className="texte-css"> {animal.prix}</div>
 					</div>
+					<div className="button-description-css">
+						<ButtonComponent
+							handleOnClick={undefined}
+							text={"Ajout"}
+							lien={undefined}
+						></ButtonComponent>
+					</div>
 				</div>
 			</div>
-			<div className="description-autre">
-				<div>Je suis un {animal.espece}</div>
-				<div>De la race des {animal.race}</div>
-				<div>Mes Vaccins sont à jours {animal.vaccin}</div>
-				<div>Je peux engendrer {animal.sterilise}</div>
+			<div className="frame-container">
+				<div className="frame-general-css">
+					<div>Je suis un {animal.espece}</div>
+				</div>
+				<div className="frame-general-css">
+					<div>De la race des {animal.race}</div>
+				</div>
+				<div className="frame-general-css">
+					<div>Mes Vaccins sont à jours {animal.vaccin}</div>
+				</div>
+				<div className="frame-general-css">
+					<div>Je suis stérilisé {animal.sterilise}</div>
+				</div>
 			</div>
 		</div>
 	);
