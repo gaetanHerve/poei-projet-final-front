@@ -40,7 +40,7 @@ function PageCreationUtilisateur() {
             <div className="card-header"><h3>Créer un compte</h3></div>
             <form onSubmit={handleSubmit} className="mt-3">
               <div className="m-3">
-                <label htmlFor="nom">Nom :</label>
+                {/* <label htmlFor="nom">Nom :</label> */}
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -51,7 +51,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
-                <label htmlFor="prenom">Prénom :</label>
+                {/* <label htmlFor="prenom">Prénom :</label> */}
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -62,7 +62,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
-                <label htmlFor="adresse">Adresse :</label>
+                {/* <label htmlFor="adresse">Adresse :</label> */}
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -73,7 +73,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
-                <label htmlFor="telephone">Téléphone :</label>
+                {/* <label htmlFor="telephone">Téléphone :</label> */}
                 <input
                   type="text"
                   className="form-control mt-3"
@@ -84,7 +84,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
 							<div className="m-3">
-                <label htmlFor="informations">Informations :</label>
+                {/* <label htmlFor="informations">Informations :</label> */}
                 <input
                   type="textarea"
                   className="form-control mt-3"
@@ -95,7 +95,7 @@ function PageCreationUtilisateur() {
                 />
               </div>
               <div className="m-3">
-                <label htmlFor="password">Mot de passe :</label>
+                {/* <label htmlFor="password">Mot de passe :</label> */}
                 <input
                   type="text"
                   className="form-control"
