@@ -7,45 +7,38 @@ import Complement from "../models/ComplementPersonne";
 
 
 function PageCreationUtilisateur() {
+  const generateId = () => { return Math.floor(Math.random()*10000 + 1); }
   const navigate = useNavigate();
-	const [complement, setComplement] = useState<Complement>(new Complement());
-  const [personne, setPersonne] = useState<Personne>(new Personne());
   const [cnxError, setCnxError] = useState("");
+  const [personne, setPersonne] = useState<Personne>({...new Personne(), id: 0, admin: false});
 
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({"id": personne.id, "password": personne.password})
+    body: JSON.stringify(personne)
   };
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch('http://localhost:8080/patoune-moi/login', requestOptions)
+    console.log(personne);
+    fetch('http://localhost:8080/patoune-moi/personnes', requestOptions)
     .then( response => {
       console.log(response);
-      return response.ok ? response.json() : Promise.reject(response);
+      if (response.ok) {
+        console.log("personne created");
+        alert(`Bienvenue ${personne.prenom}, votre compte à été créé avec succès`);
+      }
     })
     .then( data => {
-      console.log("data fetched", data);
-      sessionStorage.setItem("utilisateur", JSON.stringify(data));
-      console.log(sessionStorage.getItem("utilisateur"));
-      navigate("/");
+      // console.log("personne created");
+      // sessionStorage.setItem("utilisateur", JSON.stringify(data));
+      // console.log(sessionStorage.getItem("utilisateur"));
+      // navigate("/");
     })
     .catch( error => {
-      let errorBaseMsg = "erreur de connexion :";
-      let errorCause: string;
-      switch (error.status) {
-        case 401:
-          errorCause = "mauvais mot de passe";
-          break;
-        case 404:
-          errorCause = "login inconnu";
-          break;
-        default:
-          errorCause = ` ${error.status} : ${error.statusText}`; 
-      }
-      console.error(`${errorBaseMsg} ${errorCause}`);
-      setCnxError(errorCause);
+      console.log("error", error);
     });
   }
 
@@ -89,7 +82,7 @@ function PageCreationUtilisateur() {
                   id="adresse"
                   placeholder="Adresse"
                   name="adresse"
-                  onChange={(e) => setComplement({ ...complement, adresse: e.target.value })}
+                  onChange={(e) => setPersonne({...personne, complement: {...personne.complement, adresse: e.target.value }})}
                 />
               </div>
 							<div className="m-3">
@@ -99,7 +92,7 @@ function PageCreationUtilisateur() {
                   id="telephone"
                   placeholder="Téléphone"
                   name="telephone"
-                  onChange={(e) => setComplement({ ...complement, telephone: e.target.value })}
+                  onChange={(e) => setPersonne({...personne, complement: {...personne.complement, telephone: e.target.value }})}
                 />
               </div>
 							<div className="m-3">
@@ -109,7 +102,7 @@ function PageCreationUtilisateur() {
                   id="informations"
                   placeholder="Informations"
                   name="informations"
-                  onChange={(e) => setComplement({ ...complement, informations: e.target.value })}
+                  onChange={(e) => setPersonne({...personne, complement: {...personne.complement, informations: e.target.value }})}
                 />
               </div>
               <div className="m-3">
