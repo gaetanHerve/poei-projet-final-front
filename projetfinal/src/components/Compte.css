@@ -55,3 +55,19 @@
 .compte-label {
   margin-bottom: 10px;
 }
+
+.compte-input-submit {
+  padding: 10px 30px;
+  background-color: var(--colorFistGreen);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: none;
+  z-index: 10;
+}
+
+.compte-input-submit:hover {
+  background-color: var(--colorSecondeGreen);
+  color: white;
+}
