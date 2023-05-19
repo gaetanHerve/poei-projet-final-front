@@ -13,7 +13,7 @@ function PageConnexion() {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({"id": personne.id, "password": personne.password})
+    body: JSON.stringify({"login": personne.login, "password": personne.password})
   };
 
   const handleSubmit = (event) => {
@@ -40,7 +40,7 @@ function PageConnexion() {
           errorCause = "login inconnu";
           break;
         default:
-          errorCause = ` ${error.status} : ${error.statusText}`; 
+          errorCause = `${errorBaseMsg}`; 
       }
       console.error(`${errorBaseMsg} ${errorCause}`);
       setCnxError(errorCause);
@@ -50,7 +50,6 @@ function PageConnexion() {
   return (
     <div>
       { cnxError !== "" &&
-        
         <div id="cnxError" className="m-5 text-danger">
           {cnxError}
         </div>
@@ -58,16 +57,16 @@ function PageConnexion() {
       <div className="card-principal m-5">
         <div className="carte">
           <div className="shadow carte-principal">
-            <div className="card-header">Identifiez-vous</div>
+            <div className="card-header"><h3>Identifiez-vous</h3></div>
             <form onSubmit={handleSubmit} className="mt-3">
               <div className="m-3">
                 <input
                   type="text"
                   className="form-control mt-3"
-                  id="id"
+                  id="login"
                   placeholder="Login"
-                  name="id"
-                  onChange={(e) => setPersonne({ ...personne, id: Number(e.target.value) })}
+                  name="login"
+                  onChange={(e) => setPersonne({ ...personne, login: e.target.value })}
                 />
               </div>
               <div className="m-3">
@@ -85,7 +84,11 @@ function PageConnexion() {
                   <input className="form-check-input" type="checkbox" name="remember"/> Remember me
                 </label>
               </div>
-              <button type="submit" className="button-default mb-3">Submit</button>
+              <button type="submit" className="button-default mb-3">Se Connecter</button>
+              <div className="mb-3">OU</div>
+              <a className="nav-link" href="/creercompte">
+                <button type="button" className="button-default mb-3">Créer un compte</button>
+              </a>
             </form>
           </div>
         </div>

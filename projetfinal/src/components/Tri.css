@@ -10,6 +10,14 @@
   border-radius: 5px;
   height: 120px;
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tri-button-radio-label {
+  margin: 0px 15px;
 }
 
 .tri-button-radio-p {
@@ -34,4 +42,20 @@
 .tri-card {
   width: 85%;
   margin: 70px auto;
+}
+
+.tri-button-number {
+  padding: 10px 20px;
+  border: 2px solid var(--colorFistGreen) !important;
+  border-radius: 20px;
+  border: none;
+  color: black;
+  font-size: 1.2rem;
+  box-shadow: none;
+  margin: 0 15px;
+  width: 100px;
+}
+
+.tri-prix-label {
+  font-weight: bold;
 }

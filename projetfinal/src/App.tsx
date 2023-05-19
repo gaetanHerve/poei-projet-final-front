@@ -9,20 +9,25 @@ import PageAccueil from "./components/PageAccueil";
 import PageConnexion from "./components/PageConnexion";
 import PageCompagnons from "./components/PageCompagnons";
 import PageVueCompagnon from "./components/PageVueCompagnon";
+import Compte from "./components/Compte";
+import PageCreationUtilisateur from "./components/PageCreationUtilisateur";
+import PageinfosCompte from "./components/PageinfosCompte";
 
 function App() {
-	return (
-		<div className="App">
-			<NavBar></NavBar>
-			<BrowserRouter>
-				<Routes>
-					<Route path="connexion" element={<PageConnexion />} />
-					<Route path="pagetest" element={<PageTest />} />
-
+  return (
+    <div className="App">
+      <NavBar></NavBar>
+      <BrowserRouter>
+        <Routes>
+          <Route path="connexion" element={<PageConnexion />} />
+          <Route path="pagetest" element={<PageTest />} />
           <Route path="/" element={<PageAccueil />} />
           <Route path="noscompagnons" element={<PageCompagnons />} />
           <Route path="testfooter" element={<TestNavbarFooter />} />
           <Route path="description" element={<PageVueCompagnon />} />
+          <Route path="creercompte" element={<PageCreationUtilisateur />} />
+          <Route path="infoscompte" element={<PageinfosCompte />} />
+          <Route path="compte" element={<Compte />} />
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
