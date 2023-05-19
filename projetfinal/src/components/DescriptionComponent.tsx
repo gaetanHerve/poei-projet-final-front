@@ -3,8 +3,18 @@ import "./PageAccueil.css";
 import "./DescriptionComponent.css";
 import "./Button.css";
 import ButtonComponent from "./ButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 function DescriptionComponent({ animal }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    sessionStorage.setItem("animal", JSON.stringify(animal));
+    sessionStorage.setItem(
+      "client",
+      JSON.stringify(sessionStorage.getItem("utilisateur"))
+    );
+    navigate("/panier");
+  };
   return (
     <div className="description-card-container">
       <div className="description-container">
@@ -53,7 +63,7 @@ function DescriptionComponent({ animal }) {
           </div>
           <div className="button-description-css">
             <ButtonComponent
-              handleOnClick={undefined}
+              handleOnClick={handleClick}
               text={"Ajouter au panier"}
               lien={undefined}
             ></ButtonComponent>
