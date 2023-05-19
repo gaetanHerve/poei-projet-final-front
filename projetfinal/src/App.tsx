@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<PageAccueil />} />
           <Route path="noscompagnons" element={<PageCompagnons />} />
           <Route path="testfooter" element={<TestNavbarFooter />} />
-          <Route path="description" element={<PageVueCompagnon />} />
+          <Route path="findbyid/:id" element={<PageVueCompagnon />} />
           <Route path="creercompte" element={<PageCreationUtilisateur />} />
           <Route path="infoscompte" element={<PageinfosCompte />} />
           <Route path="compte" element={<Compte />} />

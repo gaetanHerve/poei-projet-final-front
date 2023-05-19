@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Animal } from "../models/Animal";
-import animal from "./AnimalData";
 import DescriptionComponent from "./DescriptionComponent";
 import "./PageAccueil.css";
 import "./PageVueCompagnon.css";
+import { useParams } from "react-router-dom";
 
 function PageVueCompagnon() {
-  // const { id } = useParams();
-  // const [animal, setAnimal] = useState<Animal>();
-
-  //     fetch(http://localhost:8080/site/rfcompagnon/${id})
-  //       .then((res) => res.json())
-  //       .then((data) => setAnimal(data));
-  //   }, []);
+  const { id } = useParams();
+  const [animal, setAnimal] = useState<Animal>();
+  useEffect(() => {
+    fetch(`http://localhost:8080/patoune-moi/animaux/${id}`)
+      .then((res) => res.json())
+      .then((data) => setAnimal(data));
+  }, []);
 
   return (
     <div className="position-item">
@@ -22,7 +22,7 @@ function PageVueCompagnon() {
             <div className="picture-container-position">
               <img
                 className="picture-constrain"
-                src={`assets/${animal.urlImage}`}
+                src={`../assets/${animal && animal.urlImage}`}
                 alt="photo de chien"
               />
             </div>
@@ -33,12 +33,12 @@ function PageVueCompagnon() {
                   <hr className="separator" />
                 </div>
                 <div className="text-details-improvement">
-                  {animal.description}
+                  {animal?.complement && animal.complement.informations}
                 </div>
               </div>
             </div>
           </div>
-          <DescriptionComponent></DescriptionComponent>
+          <DescriptionComponent animal={animal}></DescriptionComponent>
         </div>
       </div>
       <div className="position-details"></div>
@@ -47,6 +47,3 @@ function PageVueCompagnon() {
 }
 
 export default PageVueCompagnon;
-function useParams(): { id: any } {
-  throw new Error("Function not implemented.");
-}

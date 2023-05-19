@@ -8,7 +8,7 @@ export class Animal {
   age: number;
   poids: number;
   sexe: string;
-  endroit: string;
+  localisation: string;
   urlImage: string;
   prix: number;
   complement: ComplementAnimal;
