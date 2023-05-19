@@ -14,7 +14,7 @@ function PageCompagnons() {
   animal1.id = 1;
   animal1.nom = "Chat1";
   animal1.race = "Egyptien";
-  animal1.espece = "chat";
+  animal1.espece = "Chat";
   animal1.age = 4;
   animal1.poids = 12.5;
   animal1.sexe = "Femelle";
@@ -27,7 +27,7 @@ function PageCompagnons() {
   const animal2 = new Animal();
   animal2.id = 2;
   animal2.nom = "Chat2";
-  animal2.espece = "chat";
+  animal2.espece = "Chat";
   animal2.race = "test";
   animal2.age = 4;
   animal2.poids = 12.5;
@@ -47,7 +47,7 @@ function PageCompagnons() {
   animal3.sexe = "Male";
   animal3.endroit = "Paris";
   animal3.urlImage = "cactus.jpg";
-  animal3.espece = "chien";
+  animal3.espece = "Chien";
   animal3.prix = 20;
   animal3.description =
     "Ce chat adorable est également très intelligent et apprend rapidement. Il sait déjà utiliser sa litière et son griffoir, ce qui facilitera son intégration dans n'importe quel foyer. Félix est sociable avec les autres chats et s'est bien entendu avec les chiens lorsqu'il a été présenté, ce qui en fait un excellent compagnon pour les animaux déjà présents.";
@@ -56,7 +56,7 @@ function PageCompagnons() {
   animal4.id = 4;
   animal4.nom = "Chat4";
   animal4.race = "titi";
-  animal4.espece = "chien";
+  animal4.espece = "Chien";
   animal4.age = 4;
   animal4.poids = 12.5;
   animal4.sexe = "Male";
@@ -70,7 +70,7 @@ function PageCompagnons() {
   animal5.id = 5;
   animal5.nom = "Chat5";
   animal5.race = "dede";
-  animal5.espece = "chat";
+  animal5.espece = "Chat";
   animal5.age = 4;
   animal5.poids = 12.5;
   animal5.sexe = "Femelle";
@@ -82,7 +82,7 @@ function PageCompagnons() {
   const animal6 = new Animal();
   animal6.id = 6;
   animal6.nom = "Chat6";
-  animal6.espece = "chien";
+  animal6.espece = "Chien";
   animal6.race = "tatac";
   animal6.age = 15;
   animal6.poids = 12.5;
