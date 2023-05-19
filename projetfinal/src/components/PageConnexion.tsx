@@ -13,7 +13,7 @@ function PageConnexion() {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({"id": personne.id, "password": personne.password})
+    body: JSON.stringify({"login": personne.login, "password": personne.password})
   };
 
   const handleSubmit = (event) => {
@@ -40,7 +40,7 @@ function PageConnexion() {
           errorCause = "login inconnu";
           break;
         default:
-          errorCause = ` ${error.status} : ${error.statusText}`; 
+          errorCause = `${errorBaseMsg}`; 
       }
       console.error(`${errorBaseMsg} ${errorCause}`);
       setCnxError(errorCause);
@@ -63,10 +63,10 @@ function PageConnexion() {
                 <input
                   type="text"
                   className="form-control mt-3"
-                  id="id"
+                  id="login"
                   placeholder="Login"
-                  name="id"
-                  onChange={(e) => setPersonne({ ...personne, id: Number(e.target.value) })}
+                  name="login"
+                  onChange={(e) => setPersonne({ ...personne, login: e.target.value })}
                 />
               </div>
               <div className="m-3">
