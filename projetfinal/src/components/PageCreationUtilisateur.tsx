@@ -24,7 +24,7 @@ function PageCreationUtilisateur() {
       if (response.ok) {
         console.log("personne created");
         alert(`Bienvenue ${personne.prenom}, votre compte à été créé avec succès`);
-        navigate('/');
+        navigate('/connexion');
       }
     })
     .catch( error => {
@@ -39,6 +39,16 @@ function PageCreationUtilisateur() {
           <div className="shadow carte-principal">
             <div className="card-header"><h3>Créer un compte</h3></div>
             <form onSubmit={handleSubmit} className="mt-3">
+              <div className="m-3">
+                <input
+                  type="text"
+                  className="form-control mt-3"
+                  id="login"
+                  placeholder="Login"
+                  name="login"
+                  onChange={(e) => setPersonne({ ...personne, login: e.target.value })}
+                />
+              </div>
               <div className="m-3">
                 {/* <label htmlFor="nom">Nom :</label> */}
                 <input
