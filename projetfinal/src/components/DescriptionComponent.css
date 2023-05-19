@@ -14,6 +14,7 @@
 
 .description-title {
   margin: auto 0;
+  font-size: 1.5rem;
 }
 
 .decription-prix {
@@ -100,4 +101,10 @@
   justify-content: flex-start;
   margin-right: 3%;
   margin-top: 2%;
+}
+
+.texte-css-prix {
+  font-weight: bold;
+  font-size: x-large;
+  color: var(--colorFistGreen);
 }

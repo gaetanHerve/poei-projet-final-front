@@ -30,7 +30,7 @@ function CardComponent({ animalList }) {
                       className="card-information-logo"
                       src="assets/calendar.png"
                     />
-                    <p className="card-information-text">{animal.age} ans</p>
+                    <p className="card-information-text">{animal.age} an(s)</p>
                   </div>
                   <div className="card-information-prix">
                     <img
@@ -42,7 +42,7 @@ function CardComponent({ animalList }) {
                     </p>
                   </div>
                 </div>
-                <p className="card-text-description">{`${animal.description.substring(
+                <p className="card-text-description">{`${animal.complement.informations.substring(
                   0,
                   MAX_LENGTH
                 )}...`}</p>
