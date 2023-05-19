@@ -11,7 +11,7 @@ function DescriptionComponent() {
 			<div className="description-container">
 				<div className="frame-container">
 					<div className="frame-general-css-title">
-						<h4 className="description-title">{animal.nom}</h4>
+						<p className="description-title">{animal.nom}</p>
 					</div>
 				</div>
 				<div className="description-texte">
