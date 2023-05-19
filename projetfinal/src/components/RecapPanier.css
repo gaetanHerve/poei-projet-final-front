@@ -1,0 +1,9 @@
+.colone-input{
+    display: flex;
+}
+
+.input-width{
+    width: 30%;
+    text-align: center;
+    border: 0;
+}
