@@ -6,6 +6,7 @@
 	margin: 15px;
 	width: 40vh;
 	box-shadow: 3px 2px 4px var(--color-text-description);
+	margin-bottom: 20%;
 }
 
 .description-title {
@@ -95,4 +96,6 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-start;
+	margin-right: 3%;
+	margin-top: 2%;
 }

@@ -28,6 +28,8 @@
 
 .details-container-bottom {
 	align-self: flex-end;
+	margin-bottom: 10%;
+	margin-top: -24%;
 }
 
 .details-title-description {
@@ -36,7 +38,7 @@
 }
 
 .separator {
-	border-top: 2px solid black;
+	border-top: 2px solid var(--color-title);
 	margin: 20px auto;
 	width: 90%;
 }
@@ -54,4 +56,25 @@
 	padding: 12px;
 	width: 80%;
 	text-align: left;
+}
+
+.picture-constrain {
+	width: 60%;
+	height: 60%;
+	border: 3px groove var(--color-title);
+	border-radius: 20px;
+	box-shadow: 40px 50px 20px var(--color-title);
+}
+
+.picture-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.picture-container-position {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-top: 4%;
 }

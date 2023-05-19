@@ -18,14 +18,23 @@ function PageVueCompagnon() {
 		<div className="position-item">
 			<div className="position-container-blank">
 				<div className="container-general-page">
-					<div className="details-container-bottom">
-						<div className="details-container">
-							<div className="object-title-separator">
-								<h2 className="details-title-description">Description</h2>
-								<hr className="separator" />
-							</div>
-							<div className="text-details-improvement">
-								{animal.description}
+					<div className="picture-container">
+						<div className="picture-container-position">
+							<img
+								className="picture-constrain"
+								src={`assets/${animal.urlImage}`}
+								alt="photo de chien"
+							/>
+						</div>
+						<div className="details-container-bottom">
+							<div className="details-container">
+								<div className="object-title-separator">
+									<h2 className="details-title-description">Description</h2>
+									<hr className="separator" />
+								</div>
+								<div className="text-details-improvement">
+									{animal.description}
+								</div>
 							</div>
 						</div>
 					</div>

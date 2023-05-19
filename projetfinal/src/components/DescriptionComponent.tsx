@@ -46,7 +46,7 @@ function DescriptionComponent() {
 					<div className="button-description-css">
 						<ButtonComponent
 							handleOnClick={undefined}
-							text={"Ajout"}
+							text={"Ajouter au panier"}
 							lien={undefined}
 						></ButtonComponent>
 					</div>
