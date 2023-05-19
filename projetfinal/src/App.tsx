@@ -10,6 +10,7 @@ import PageConnexion from "./components/PageConnexion";
 import PageCompagnons from "./components/PageCompagnons";
 import PageVueCompagnon from "./components/PageVueCompagnon";
 import PageCreationUtilisateur from "./components/PageCreationUtilisateur";
+import PageinfosCompte from "./components/PageinfosCompte";
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 					<Route path="testfooter" element={<TestNavbarFooter />} />
 					<Route path="description" element={<PageVueCompagnon />} />
 					<Route path="creercompte" element={<PageCreationUtilisateur />} />
+					<Route path="infoscompte" element={<PageinfosCompte />} />
 				</Routes>
 			</BrowserRouter>
 			<Footer></Footer>

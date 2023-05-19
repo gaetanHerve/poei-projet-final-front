@@ -61,6 +61,20 @@ function NavBar() {
               </li>
             </ul>
           </div>
+          { !sessionStorage.getItem("utilisateur") &&
+            <div className="navbar-brand justify-content-end">
+              <a className="nav-link" href="/connexion">
+                <img src="assets/user.png" height="30px" alt="mon compte" />
+              </a>
+            </div>
+          }
+          { sessionStorage.getItem("utilisateur") &&
+            <div className="navbar-brand justify-content-end">
+              <a className="nav-link" href="/infoscompte">
+                <img src="assets/connectedUser.png" height="30px" alt="mon compte" />
+              </a>
+            </div>
+          }
         </div>
       </nav>
     </>
