@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Personne from "../models/Personne";
-// import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const [deconnected, setDeconnected] = useState(false);
-  // const [personne, setPersonne] = useState<Personne>(new Personne());
+  const [personne, setPersonne] = useState({...new Personne()});
   const [connected, setConnected] = useState(false);
-  // const navigate = useNavigate();
 
   useEffect(() => {
-    if (sessionStorage.getItem("utilisateur")) {
       setConnected(true);
-      // setPersonne({
-      //   ...JSON.parse(sessionStorage.getItem("utilisateur") ?? ""),
-      // });
-    }
+      console.log("connected");
+      setPersonne({...JSON.parse(sessionStorage.getItem("utilisateur"))});
   }, []);
 
   const deconnection = () => {
     sessionStorage.removeItem("utilisateur");
-    // deconnectionAsked = true;
-    setDeconnected(true);
-    // navigate("/");
+    setPersonne({...new Personne()});
+    setConnected(false);
   };
+  
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-white bg-white">
@@ -84,15 +78,15 @@ function NavBar() {
             </ul>
           </div>
           {!connected && (
-            <div className="navbar-brand justify-content-end">
+            <div className="navbar-item justify-content-end">
               <a className="nav-link" href="/connexion">
                 <img src="assets/user.png" height="30px" alt="mon compte" />
               </a>
             </div>
           )}
           {connected && (
-            <div className="navbar-brand justify-content-end">
-              {/* <div>{personne.login}</div> */}
+            <div className="navbar-item justify-content-end">
+              <div>{personne && personne.login}</div>
               <div>
                 <button className="button-default mb-3" onClick={deconnection}>
                   Se Déconnecter
