@@ -4,7 +4,8 @@
 	border-radius: 5px;
 	padding: 24px;
 	margin: 15px;
-	width: 75vh;
+	width: 40vh;
+	box-shadow: 3px 2px 4px var(--color-text-description);
 }
 
 .description-title {
@@ -59,25 +60,12 @@
 	border-radius: 20px;
 	border: 5px;
 	color: var(--colorBackground);
-	width: 50vh;
+	width: 40vh;
 	height: 5vh;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
-}
-
-.frame-general-css-a {
-	display: flex;
-	padding: 5px;
-	background-color: var(--color-title);
-	border-radius: 20px;
-	border: 5px;
-	color: var(--colorBackground);
-	width: 50vh;
-	height: 5vh;
-	justify-content: center;
-	align-items: flex-start;
-	margin-bottom: 20px;
+	box-shadow: 3px 4px 4px var(--color-text-description);
 }
 
 .frame-general-css-title {
@@ -88,7 +76,7 @@
 	border-radius: 20px;
 	border: 5px;
 	color: var(--colorBackground);
-	width: 40vh;
+	width: 25vh;
 	height: 8vh;
 	justify-content: center;
 	margin-bottom: 20px;
