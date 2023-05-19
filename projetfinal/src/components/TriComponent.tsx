@@ -38,10 +38,10 @@ function TriComponent({ tableauAnimal }) {
               <input
                 className="tri-button-radio"
                 type="radio"
-                value="chat"
+                value="Chat"
                 // name="espece"
-                checked={filters.espece === "chat"}
-                onChange={() => updateFilters("espece", "chat")}
+                checked={filters.espece === "Chat"}
+                onChange={() => updateFilters("espece", "Chat")}
               />
               <p className="tri-button-radio-p">Chat</p>
             </label>
@@ -49,10 +49,10 @@ function TriComponent({ tableauAnimal }) {
               <input
                 className="tri-button-radio"
                 type="radio"
-                value="chien"
+                value="Chien"
                 // name="espece"
-                checked={filters.espece === "chien"}
-                onChange={() => updateFilters("espece", "chien")}
+                checked={filters.espece === "Chien"}
+                onChange={() => updateFilters("espece", "Chien")}
               />
               <p className="tri-button-radio-p">Chien</p>
             </label>
@@ -111,7 +111,7 @@ function TriComponent({ tableauAnimal }) {
         <div className="tri-container-button">
           <h4>Prix</h4>
           <div>
-            <label>
+            <label className="tri-prix-label">
               Minimum :
               <input
                 className="tri-button-number"
@@ -120,7 +120,7 @@ function TriComponent({ tableauAnimal }) {
                 onChange={(e) => updateFilters("minPrix", e.target.value)}
               />
             </label>
-            <label>
+            <label className="tri-prix-label">
               Maximum :
               <input
                 className="tri-button-number"
