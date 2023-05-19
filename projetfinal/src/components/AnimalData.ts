@@ -1,4 +1,4 @@
-const animal = {
+    const animal = {
 	id: 1,
 	nom: "Felix",
 	race: "Berger Australien",
