@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Article } from "./Article";
-import Entete from "./Entete";
 import CardArticle from "./CardArticle";
 import "./PageAccueil.css";
 
