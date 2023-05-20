@@ -21,9 +21,15 @@ function HistoriqueCommandes({utilisateur}) {
     });
   }, [utilisateur]);
   
-  const afficherDetails = (commande) => {
-    let details = commande.listeLignes;
-    console.log(details);
+  const afficherDetails = (e, commande) => {
+    if (commande.infos && commande.infos != "") {
+      let commandeDetails = JSON.parse(commande.infos);
+      setDetails(commandeDetails)
+      setDetails({...commandeDetails, jour:commande.jour})
+      console.log(details);
+    } else {
+      setDetails({listeLignes: [], prixTotalFacture: 0});
+    }
   };
 
   const sort = (event) => {
@@ -45,28 +51,61 @@ function HistoriqueCommandes({utilisateur}) {
                 <th id="id" onClick={(e) => sort(e)}>Id</th>
                 <th id="prixTotal" onClick={(e) => sort(e)}>Prix</th>
                 <th>Date</th>
-                <th>Infos</th>
                 <th id="facture" onClick={(e) => sort(e)} >Facturée</th>
+                <th>Détail</th>
             </tr>
             </thead>
             <tbody>    
-                {commandes.length > 0 && commandes.map((commande) =>
-                    <tr key={commande.id}>
+                {commandes.length > 0 && commandes.map((commande, index) =>
+                    <tr key={index}>
                         <td>{ commande.id }</td>
                         <td>{ commande.prixTotal }</td>
                         <td>{ commande.jour }</td>
-                        <td>{ commande.infos }</td>
-                        <td>{ commande.facture }</td>
+                        <td>{ commande.facture ? "oui" : "non" }</td>
                         <td><input
                           type="button"
                           className="compte-commands-display m-2"
-                          value={"AfficherDétails"}
-                          onClick={e => afficherDetails({commande})}></input>
+                          value={"Afficher"}
+                          onClick={(e) => {
+                            afficherDetails(e, commande);
+                          }}></input>
                         </td>
+                        {/* <td>{ commande.infos }</td> */}
                     </tr>
                 )}
             </tbody>
         </table>
+        { details && details.listeLignes.length > 0 &&
+        <>
+        {/* <div className="card"> TODO=> make a card great again*/}
+        <h4>Commande du {details.jour}</h4>
+        <h4>Prix total commande : {details.prixTotalFacture}€</h4>
+        <table className="table table-striped">
+             
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>nom</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix * quantité</th>
+          </tr>
+          </thead>
+          <tbody>    
+              {details.listeLignes.length > 0 && details.listeLignes.map((ligne, index) =>
+                  <tr key={index}>
+                      <td>{ ligne.id }</td>
+                      <td>{ ligne.nom }</td>
+                      <td>{ ligne.prix }€</td>
+                      <td>{ ligne.quantite }</td>
+                      <td>{ ligne.prix }€</td>
+                  </tr>
+              )}
+          </tbody>
+        </table>
+        {/* </div> */}
+        </>
+        }
     </div>
     }
     </>
