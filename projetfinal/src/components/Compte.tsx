@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Personne from "../models/Personne";
-import Complement from "../models/ComplementPersonne";
 import "./Compte.css";
-import ButtonComponent from "./ButtonComponent";
-import { useNavigate } from "react-router-dom";
+import HistoriqueCommandes from "./HistoriqueCommandes";
 
 function Compte() {
-  const navigate = useNavigate();
   const [personne, setPersonne] = useState<Personne>();
   const [person, setPerson] = useState({});
-
-  const [deconnected, setDeconnected] = useState(false);
-  let deconnectionAsked = false;
+  const [afficherCommandes, setAfficherCommandes] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem("utilisateur")) {
@@ -20,13 +15,6 @@ function Compte() {
       });
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (personne != undefined) {
-  //     setPerson({ ...person, ...personne });
-  //     personne2 = personne;
-  //   }
-  // }, [personne]);
 
   const requestOptions = {
     method: "PUT",
@@ -49,6 +37,7 @@ function Compte() {
     <div className="compte-container">
       <h1 className="compte-titre">Mon espace</h1>
       {personne && person && (
+        <>
         <form onSubmit={handleSubmit} className="compte-container-input">
           <div className="compte-container-name">
             <div className="compte-container-label-input">
@@ -132,8 +121,18 @@ function Compte() {
             </div>
           </div>
           <input type="submit" className="compte-input-submit" />
+          <input
+            type="button"
+            className="compte-commands-display m-5"
+            value={afficherCommandes ? "Masquer" : "Mes commandes"}
+            onClick={e => setAfficherCommandes(!afficherCommandes)}></input>
         </form>
+        
+        </>
       )}
+      { personne && afficherCommandes &&
+        <HistoriqueCommandes utilisateur={personne}/>
+      }
     </div>
   );
 }
