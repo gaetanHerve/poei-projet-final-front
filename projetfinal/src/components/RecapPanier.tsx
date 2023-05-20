@@ -1,19 +1,42 @@
 import { useState, useEffect } from 'react';
 import { Panier, Ligne } from './Panier';
-import { Animal } from './Animal';
 import React from 'react';
-import { Personne } from './personne';
 import { Commande } from "./Commande";
 import "./RecapPanier.css";
+import Personne from '../models/Personne';
+import { Animal } from '../models/Animal';
 
 function RecapPanier() {
-	const [animal, setAnimal] = useState({});
-	const [panier, setPanier] = useState<Panier>({ listeLignes: [], prixTotalFacture: 0 });
-	const [client, setClient] = useState<Personne>({
+	const [animal, setAnimal] = useState<Animal>({  
 		id: 0,
 		nom: "",
-		prenom: "",
+		race: "",
+		espece: "",
+		age: 0,
+		poids: 0,
+		sexe: "",
+		localisation: "",
+		urlImage: "",
+		prix: 0,
+		complement: { vaccin: false,
+			sterilise: true,
+			informations: ""},
+		status: "",
+
 	});
+	const [panier, setPanier] = useState<Panier>({nomClient:"", listeLignes: [], prixTotalFacture: 0 });
+	const [client, setClient] = useState<Personne>({
+		id: 0,
+		login: "",
+		password: "",
+		nom: "",
+		prenom: "",
+		admin: false,
+		complement: {    adresse: "",
+			telephone: "",
+			informations: ""},
+	});
+
 	const [date, setDate] = useState("");
 	const [ligne, setLigne] = useState<Ligne>({ id: 0, nom: "", quantite: 0, prix: 0, prixLigne: 0 });
 
@@ -28,8 +51,8 @@ function RecapPanier() {
 
 	const handleDelete = (index, e) => {
 		let tmp = panier.listeLignes.filter((v, i) => i !== index)
-		//console.log(tmp)
-		setPanier({ ...panier, listeLignes: [...tmp] })
+		var prixLigneSupp = panier.listeLignes[index].prixLigne
+		setPanier({ ...panier, listeLignes: [...tmp], prixTotalFacture: panier.prixTotalFacture - prixLigneSupp})
 	}
 
 	const requestOptions = {
@@ -66,7 +89,23 @@ function RecapPanier() {
 			//console.log(JSON.parse(itemA));
 		}
 		else {
-			setAnimal({});
+			setAnimal({  
+				id: 0,
+				nom: "",
+				race: "",
+				espece: "",
+				age: 0,
+				poids: 0,
+				sexe: "",
+				localisation: "",
+				urlImage: "",
+				prix: 0,
+				complement: { vaccin: false,
+					sterilise: true,
+					informations: ""},
+				status: "",
+		
+			});
 		}
 
 		var itemP = sessionStorage.getItem("panier");
@@ -76,10 +115,10 @@ function RecapPanier() {
 			//console.log(JSON.parse(itemP));
 		}
 		else {
-			setPanier({ listeLignes: [], prixTotalFacture: 0 });
+			setPanier({nomClient:"", listeLignes: [], prixTotalFacture: 0 });
 		}
 
-		var itemC = sessionStorage.getItem("client");
+		var itemC = sessionStorage.getItem("utilisateur");
 		//console.log(itemC);
 		if (itemC) {
 			setClient(JSON.parse(itemC));
@@ -88,15 +127,20 @@ function RecapPanier() {
 		else {
 			setClient({
 				id: 0,
+				login: "",
+				password: "",
 				nom: "",
 				prenom: "",
+				admin: false,
+				complement: {    adresse: "",
+					telephone: "",
+					informations: ""},
 			});
 		}
 
 		var d = new Date();
 		var actualDate = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
 		setDate(actualDate);
-
 
 	}, [])
 

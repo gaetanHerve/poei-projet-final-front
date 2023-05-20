@@ -1,5 +1,6 @@
 export interface Panier {
 
+    nomClient:string;
     listeLignes: Array<Ligne>;
     prixTotalFacture: number;
 

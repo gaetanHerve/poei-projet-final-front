@@ -4,43 +4,15 @@ import ButtonComponent from "./ButtonComponent";
 import "./Card.css";
 import { useState, useEffect } from "react";
 import { Panier, Ligne } from "./Panier";
-import { Animal } from "../models/Animal";
-import Personne from "../models/Personne";
+import { Session } from "inspector";
 
 function CardArticle({ articleList }) {
 	const MAX_LENGTH = 70;
 
-	const [animal, setAnimal] = useState<Animal>({  
-		id: 0,
-		nom: "",
-		race: "",
-		espece: "",
-		age: 0,
-		poids: 0,
-		sexe: "",
-		localisation: "",
-		urlImage: "",
-		prix: 0,
-		complement: { vaccin: false,
-			sterilise: true,
-			informations: ""},
-		status: "",
+	const [animal, setAnimal] = useState({});
+	const [personne, setPersonne] = useState({});
 
-	});
-
-	const [client, setClient] = useState<Personne>({
-		id: 0,
-		login: "",
-		password: "",
-		nom: "",
-		prenom: "",
-		admin: false,
-		complement: {    adresse: "",
-			telephone: "",
-			informations: ""},
-	});
-
-	const [panier, setPanier] = useState<Panier>({ nomClient: "", listeLignes: [], prixTotalFacture: 0 });
+	const [panier, setPanier] = useState<Panier>({ listeLignes: [], prixTotalFacture: 0 });
 	const [ligne, setLigne] = useState<Ligne>({ id: 0, nom: "", quantite: 0, prix: 0, prixLigne: 0 });
 
 	const navigate = useNavigate(); // pour rediriger la page
@@ -48,62 +20,42 @@ function CardArticle({ articleList }) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		console.log("CLICK");
-
-		/* 		console.log(ligne);
-		
-				console.log("PANIER");
-		
-				console.log(panier); */
-
-		var oldPrixTot = 0;
-		var newPrixTot = 0;
-		var prixFinal;
-
-		if (panier.listeLignes.length != 0) // evite la liste vide du premier click
-		{
-
-			oldPrixTot = panier.prixTotalFacture;
-
-			for (let i = 0; (i < panier.listeLignes.length); i++) {
-
-				let newLigne = panier.listeLignes[i];
-				let lastLigne = panier.listeLignes[panier.listeLignes.length - 1]; // recupere le dernier element
-
-				if (newLigne.id === lastLigne.id && panier.listeLignes.indexOf(newLigne) !== panier.listeLignes.length - 1) { // si l id article est egale pour 2 ligne et que ce n est pas la meme ligne
-
-					console.log("OK");
-					//console.log(panier.listeLignes);
-
-					setLigne({ ...ligne, quantite: ligne.quantite + 1, prixLigne: ligne.prix * ligne.quantite }); // creation d une nouvelle ligne
-
-				}
-
-				newPrixTot += panier.listeLignes[i].prixLigne; // met a jour le prix
-
-			}
-
-			prixFinal = newPrixTot - oldPrixTot + animal.prix;
-
-		}
-
-		else {
-
-			prixFinal = animal.prix;
-
-		}
 
 		setPanier({
-			...panier, listeLignes: [...panier.listeLignes, { ...ligne }], prixTotalFacture: panier.prixTotalFacture + prixFinal
+			...panier, listeLignes: [...panier.listeLignes, { ...ligne }], prixTotalFacture: panier.prixTotalFacture
 		});
 
-		console.log("LIGNE");
+		console.log("CLICK");
 
 		console.log(ligne);
 
 		console.log("PANIER");
 
 		console.log(panier);
+
+		for (let i = 0; (i < panier.listeLignes.length); i++) {
+
+			let newLigne = panier.listeLignes[i];
+			let lastLigne = panier.listeLignes[panier.listeLignes.length - 1]; // recupere le dernier element
+
+			//console.log(panier.listeLignes.indexOf(newLigne), newLigne.id, lastLigne.id, panier.listeLignes.length)
+
+			if (newLigne.id === lastLigne.id && panier.listeLignes.indexOf(newLigne) !== panier.listeLignes.length - 1) { // si l id article est egale pour 2 ligne et que ce n est pas la meme ligne
+				//console.log("OK");
+
+				panier.listeLignes[panier.listeLignes.indexOf(newLigne)].quantite += 1; // incremente la quantite
+
+				var quantiteUpd = panier.listeLignes[panier.listeLignes.indexOf(newLigne)].quantite;
+
+				panier.listeLignes[panier.listeLignes.indexOf(newLigne)].prixLigne = quantiteUpd * panier.listeLignes[panier.listeLignes.indexOf(newLigne)].prix; // incremente la quantite
+
+				ligneDelete(panier.listeLignes.length - 1); // supprime la derniere ligne (le dernier article arrive)
+
+			}
+
+			panier.prixTotalFacture += panier.listeLignes[i].prixLigne; // met a jour le prix
+
+		}
 
 	}
 
@@ -118,10 +70,10 @@ function CardArticle({ articleList }) {
 
 	const disableBtn = (e) => {
 		e.preventDefault();
-		console.log(e.target.id);
-		e.target.setAttribute("disabled", true);
-		e.target.style["background-color"] = "grey";
-	}
+    console.log(e.target.id);
+    e.target.setAttribute("disabled", true);
+    e.target.style["background-color"] = "grey";
+  }
 
 	useEffect(() => {
 
@@ -132,46 +84,9 @@ function CardArticle({ articleList }) {
 			//console.log(JSON.parse(itemA));
 		}
 		else {
-			setAnimal({  
-				id: 0,
-				nom: "",
-				race: "",
-				espece: "",
-				age: 0,
-				poids: 0,
-				sexe: "",
-				localisation: "",
-				urlImage: "",
-				prix: 0,
-				complement: { vaccin: false,
-					sterilise: true,
-					informations: ""},
-				status: "",
-		
-			});
+			setAnimal({});
 		}
 
-		var itemC = sessionStorage.getItem("utilisateur");
-		//console.log(itemC);
-		if (itemC) {
-			setClient(JSON.parse(itemC));
-			//console.log(JSON.parse(itemC));
-		}
-		else {
-			setClient({
-				id: 0,
-				login: "",
-				password: "",
-				nom: "",
-				prenom: "",
-				admin: false,
-				complement: {    adresse: "",
-					telephone: "",
-					informations: ""},
-			});
-		}
-
-		sessionStorage.setItem("lastLigne", JSON.stringify(ligne));
 		sessionStorage.setItem("panier", JSON.stringify(panier));
 	}, [panier])
 
@@ -211,7 +126,6 @@ function CardArticle({ articleList }) {
 											//handleOnClick={(e) => setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1 })}
 											handleOnClick={(e) => {
 												setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1, prixLigne: Number(article.prix) });
-												setPanier({ ...panier, nomClient: client.nom });
 												//disableBtn(e)
 												//uniqueId(panier, article, index, e)
 											}}
