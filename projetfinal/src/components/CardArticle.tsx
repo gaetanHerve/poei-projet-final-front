@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ButtonComponent from "./ButtonComponent";
 import "./Card.css";
 import { useState, useEffect } from "react";
-import { Animal } from "./Animal";
 import { Panier, Ligne } from "./Panier";
-import { Personne } from "./personne";
+import { Session } from "inspector";
 
 function CardArticle({ articleList }) {
 	const MAX_LENGTH = 70;
@@ -36,9 +35,42 @@ function CardArticle({ articleList }) {
 					...panier, listeLignes: [...panier.listeLignes, { ...ligneUpd }], prixTotalFacture: panier.prixTotalFacture + (ligneUpd.prixLigne)
 				}); */
 
+
 		setPanier({
-			...panier, listeLignes: [...panier.listeLignes, { ...ligne }], prixTotalFacture: panier.prixTotalFacture + (ligne.prixLigne)
+			...panier, listeLignes: [...panier.listeLignes, { ...ligne }], prixTotalFacture: animal.prix
 		});
+
+		console.log("CLICK");
+
+		console.log(ligne);
+
+		console.log("PANIER");
+
+		console.log(panier);
+
+		for (let i = 0; (i < panier.listeLignes.length); i++) {
+
+			let newLigne = panier.listeLignes[i];
+			let lastLigne = panier.listeLignes[panier.listeLignes.length - 1]; // recupere le dernier element
+
+			//console.log(panier.listeLignes.indexOf(newLigne), newLigne.id, lastLigne.id, panier.listeLignes.length)
+
+			if (newLigne.id === lastLigne.id && panier.listeLignes.indexOf(newLigne) !== panier.listeLignes.length - 1) { // si l id article est egale pour 2 ligne et que ce n est pas la meme ligne
+				//console.log("OK");
+
+				panier.listeLignes[panier.listeLignes.indexOf(newLigne)].quantite += 1; // incremente la quantite
+
+				var quantiteUpd = panier.listeLignes[panier.listeLignes.indexOf(newLigne)].quantite;
+
+				panier.listeLignes[panier.listeLignes.indexOf(newLigne)].prixLigne = quantiteUpd * panier.listeLignes[panier.listeLignes.indexOf(newLigne)].prix; // incremente la quantite
+
+				ligneDelete(panier.listeLignes.length - 1); // supprime la derniere ligne (le dernier article arrive)
+
+			}
+
+			panier.prixTotalFacture += panier.listeLignes[i].prixLigne; // met a jour le prix
+
+		}
 
 	}
 
@@ -51,49 +83,12 @@ function CardArticle({ articleList }) {
 		setPanier({ ...panier, listeLignes: [...tmp] })
 	}
 
-	function uniqueId(panier, article, index, e) {
-		console.log("CLICK");
-		for (let i = 0; (i < panier.listeLignes.length); i++) {
-			console.log(article.id, panier.listeLignes[i].quantite);
-			if (typeof panier.listeLignes[i].quantite !== 'undefined') {
-
-				let idLigne = panier.listeLignes[i];
-				var quantiteUpd;
-
-				if (idLigne.id === article.id) {
-
-					quantiteUpd = panier.listeLignes[i].quantite + 1;
-					ligneDelete(i);
-
-				}
-			}
-
-			else {
-
-				quantiteUpd = 1;
-			}
-
-		}
-
-		return setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: quantiteUpd, prixLigne: Number(article.prix) * quantiteUpd });
-
-	}
-
-/* 	function isUndefined(panier) {
-		console.log("CLICK");
-		for (let i = 0; (i < panier.listeLignes.length); i++) {
-			//console.log(article.id, panier.listeLignes[i].quantite);
-			if (typeof panier.listeLignes[i].quantite === 'undefined') {
-				console.log("OK");
-				console.log(i, panier.listeLignes[i].quantite);
-				ligneDelete(i);
-
-			}
-
-		}
-
-	} */
-
+	const disableBtn = (e) => {
+		e.preventDefault();
+    console.log(e.target.id);
+    e.target.setAttribute("disabled", true);
+    e.target.style["background-color"] = "grey";
+  }
 
 	useEffect(() => {
 
@@ -115,8 +110,14 @@ function CardArticle({ articleList }) {
 								<div className="card-container-text">
 									<h4 className="card-nom">{article.nom}</h4>
 									<div className="card-information">
-										<div className="card-information-age">
-											<p className="card-information-text">{article.prix} €</p>
+										<div className="card-information-prix">
+											<img
+												className="card-information-logo"
+												src="assets/prix.png"
+											/>
+											<p className="card-information-text card-information-text-prix">
+												{article.prix} €
+											</p>
 										</div>
 									</div>
 									<p className="card-text-description">{`${article.description.substring(
@@ -128,7 +129,11 @@ function CardArticle({ articleList }) {
 											lien={`/pagearticle`}
 											text="Ajouter"
 											//handleOnClick={(e) => setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1 })}
-											handleOnClick={(e) => uniqueId(panier, article, index, e)} // persiste pour corriger le premier click
+											handleOnClick={(e) => {
+												setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1, prixLigne: Number(article.prix) });
+												//disableBtn(e)
+												//uniqueId(panier, article, index, e)
+											}}
 										></ButtonComponent>
 									</div>
 								</div>
