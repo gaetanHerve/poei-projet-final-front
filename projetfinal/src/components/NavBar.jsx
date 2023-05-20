@@ -15,7 +15,6 @@ function NavBar() {
         setConnected(true);
         setUser({...JSON.parse(sessionStorage.getItem("utilisateur"))});
       }
-      // setConnected(sessionStorage.getItem("utilisateur"));
   }
 
   const deconnection = () => {
@@ -83,32 +82,46 @@ function NavBar() {
               </li>
             </ul>
           </div>
-          {!connected && (
-            <div className="navbar-brand justify-content-end">
-              <a className="nav-link" href="/connexion">
-                <img src="assets/user.png" height="30px" alt="mon compte" />
-              </a>
-            </div>
-          )}
-          {connected && (
-            <div className="navbar-brand justify-content-end">
-              <div>{user.login}</div>
-              <div>
-                <button className="button-default mb-3" onClick={deconnection}>
-                  Se Déconnecter
-                </button>
-              </div>
-              <div>
-                <a className="nav-link" href="/compte">
-                  <img
-                    src="assets/connectedUser.png"
-                    height="30px"
-                    alt="mon compte"
-                  />
-                </a>
-              </div>
-            </div>
-          )}
+          <div className="navbar-brand justify-content-end">
+              <ul className="navbar-nav me-auto">
+              {!connected && (
+                <>
+                <li className="nav-item">
+                  <a className="nav-link" href="/connexion">
+                    <img src="assets/user.png" height="30px" alt="mon compte" />
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <img src="assets/blank.png" height="30px" alt=""/>
+                </li>
+              </>
+              )}
+              {connected && (
+              <>
+                <li className="nav-item m-1">
+                  Bienvenue, {user.login}
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/compte">
+                    <img src="assets/connectedUser.png" height="30px" alt="mon compte"/>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/">
+                    <img src="assets/deconnexion.png" height="30px" onClick={deconnection} alt="deconnexion"/>
+                  </a>
+                </li>
+                { user.admin && (
+                  <li className="nav-item">
+                    <a className="nav-link" href="http://localhost:8080/patoune-moi/animauxpage/findall" target="_blank" rel="noopener noreferrer">
+                      <img src="assets/admin.png" height="30px" alt="administration"/>
+                    </a>
+                  </li>
+                )}
+              </>
+              )}
+          </ul>
+          </div>
         </div>
       </nav>
     </>
