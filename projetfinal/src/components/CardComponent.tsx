@@ -42,10 +42,12 @@ function CardComponent({ animalList }) {
                     </p>
                   </div>
                 </div>
+                { animal.complement && animal.complement.informations &&
                 <p className="card-text-description">{`${animal.complement.informations.substring(
                   0,
                   MAX_LENGTH
                 )}...`}</p>
+                }
                 <div className="card-button">
                   <ButtonComponent
                     lien={`/findbyid/${animal.id}`}
