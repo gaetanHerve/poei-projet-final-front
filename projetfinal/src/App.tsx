@@ -14,6 +14,8 @@ import PageCreationUtilisateur from "./components/PageCreationUtilisateur";
 import PageinfosCompte from "./components/PageinfosCompte";
 import RecapPanier from "./components/RecapPanier";
 import PageArticle from "./components/PageArticle";
+import PageContact from "./components/PageContact";
+
 
 function App() {
   return (
@@ -30,8 +32,9 @@ function App() {
           <Route path="creercompte" element={<PageCreationUtilisateur />} />
           <Route path="infoscompte" element={<PageinfosCompte />} />
           <Route path="compte" element={<Compte />} />
-		  <Route path="pagearticle" element={<PageArticle />} />
+		      <Route path="pagearticle" element={<PageArticle />} />
           <Route path="recappanier" element={<RecapPanier />} />
+          <Route path="contact" element={<PageContact />} />
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
