@@ -50,7 +50,7 @@ function Footer() {
         </div>
         <div className="button-place">
           <ButtonComponent
-            lien="/"
+            lien="/contact"
             text="Nous Contacter"
             handleOnClick={() => {}}
           ></ButtonComponent>

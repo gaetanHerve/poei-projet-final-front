@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Personne from "../models/Personne";
+import { Animal } from "../models/Animal";
 
 function NavBar() {
   const [connected, setConnected] = useState(false);
@@ -21,6 +22,16 @@ function NavBar() {
     sessionStorage.removeItem("utilisateur");
     setUser({ ...new Personne() });
   };
+
+  const [animals, setAnimals] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/patoune-moi/animaux")
+      .then((res) => res.json())
+      .then((data) => setAnimals(data));
+  }, []);
+
+  const randomNumber =
+    Math.floor(Math.random() * Object.keys(animals).length) + 1;
 
   return (
     <>
@@ -49,36 +60,14 @@ function NavBar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="">
+                <a className="nav-link" href={`/findbyid/${randomNumber}`}>
                   Au hasard ?
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="">
+                <a className="nav-link" href="/contact">
                   Contact
                 </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                >
-                  FAQ
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="">
-                      Cadre de vie
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="">
-                      Alimentation
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
           </div>
