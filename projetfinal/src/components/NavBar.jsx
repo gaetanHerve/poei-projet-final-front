@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Personne from "../models/Personne";
-// import { useNavigate } from "react-router-dom";
 
-function NavBar() {
-  const [deconnected, setDeconnected] = useState(false);
-  // const [personne, setPersonne] = useState<Personne>(new Personne());
+function NavBar() {  
   const [connected, setConnected] = useState(false);
-  // const navigate = useNavigate();
+  const [user, setUser] = useState({...new Personne()});
 
   useEffect(() => {
-    if (sessionStorage.getItem("utilisateur")) {
-      setConnected(true);
-      // setPersonne({
-      //   ...JSON.parse(sessionStorage.getItem("utilisateur") ?? ""),
-      // });
-    }
-  }, []);
+    var timerID = setInterval(() => checkConnection(), 500);
+    return () => clearInterval(timerID);
+  });
+
+  function checkConnection() {
+      if (sessionStorage.getItem("utilisateur")) {
+        setConnected(true);
+        setUser({...JSON.parse(sessionStorage.getItem("utilisateur"))});
+      }
+      // setConnected(sessionStorage.getItem("utilisateur"));
+  }
 
   const deconnection = () => {
     sessionStorage.removeItem("utilisateur");
-    // deconnectionAsked = true;
-    setDeconnected(true);
-    // navigate("/");
+    setUser({...new Personne()});
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-white bg-white">
@@ -92,7 +92,7 @@ function NavBar() {
           )}
           {connected && (
             <div className="navbar-brand justify-content-end">
-              {/* <div>{personne.login}</div> */}
+              <div>{user.login}</div>
               <div>
                 <button className="button-default mb-3" onClick={deconnection}>
                   Se Déconnecter
