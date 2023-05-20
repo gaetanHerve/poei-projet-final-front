@@ -21,6 +21,8 @@ function TriComponent({ tableauAnimal }) {
     );
   });
 
+  const sortedTab = filteredData.sort((a, b) => a.prix - b.prix);
+
   const updateFilters = (filterType, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -133,7 +135,7 @@ function TriComponent({ tableauAnimal }) {
         </div>
       </div>
       <div className="tri-card">
-        <CardComponent animalList={filteredData}></CardComponent>
+        <CardComponent animalList={sortedTab}></CardComponent>
       </div>
     </>
   );
