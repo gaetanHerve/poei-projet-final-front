@@ -106,12 +106,11 @@ function CardArticle({ articleList }) {
   //   setPanier({ ...panier, listeLignes: [...tmp] });
   // };
 
-  // const disableBtn = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.id);
-  //   e.target.setAttribute("disabled", true);
-  //   e.target.style["background-color"] = "grey";
-  // };
+  const disableBtn = (e) => {
+    console.log(e.target.id);
+    e.target.setAttribute("disabled", true);
+    e.target.style["background-color"] = "grey";
+  };
 
   useEffect(() => {
     var itemA = sessionStorage.getItem("animal");
@@ -203,7 +202,7 @@ function CardArticle({ articleList }) {
                           prixLigne: Number(article.prix),
                         });
                         setPanier({ ...panier, nomClient: client.nom, prixTotalFacture: (panier.prixTotalFacture + Number(article.prix))});
-                        //disableBtn(e)
+                        disableBtn(e)
                         //uniqueId(panier, article, index, e)
                         alert(`${article.nom} a été ajouté au panier`);
                       }}
