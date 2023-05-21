@@ -6,7 +6,7 @@ import InfosCompte from "./InfosCompte";
 
 function Compte() {
   const [personne, setPersonne] = useState<Personne>();
-  const [afficherCommandes, setAfficherCommandes] = useState(false);
+  const [afficherCommandes, setAfficherCommandes] = useState(true);
 
   useEffect(() => {
     if (sessionStorage.getItem("utilisateur")) {
@@ -30,7 +30,7 @@ function Compte() {
 
   return (
     <div className="compte-container">
-      <h1 id="titreInfos" className="compte-titre compte-titre-selected"
+      <h1 id="titreInfos" className="compte-titre"
         onClick={(e) => {
           setAfficherCommandes(false);
           handleDisplaySelection(e);
@@ -38,7 +38,7 @@ function Compte() {
           Mes infos
       </h1>
       <h1 style={{display: "inline-block"}}>|</h1>
-      <h1 id="titreCommandes" className="compte-titre"
+      <h1 id="titreCommandes" className="compte-titre compte-titre-selected"
         onClick={(e) => {
           setAfficherCommandes(true);
           handleDisplaySelection(e);
