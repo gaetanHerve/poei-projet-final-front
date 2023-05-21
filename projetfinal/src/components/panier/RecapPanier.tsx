@@ -61,8 +61,7 @@ function RecapPanier() {
 		wantedPrice += animal.prix;
 		panier.listeLignes.forEach(ligne => {
 			wantedPrice += ligne.prix * ligne.quantite;
-		})
-		console.log("wantedPrice: ", wantedPrice);
+		});
 		if (wantedPrice !== panier.prixTotalFacture) {
 			setPanier({...panier, prixTotalFacture: wantedPrice});
 		}

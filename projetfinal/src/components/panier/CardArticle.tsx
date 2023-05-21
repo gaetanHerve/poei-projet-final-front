@@ -205,7 +205,7 @@ function CardArticle({ articleList }) {
                         setPanier({ ...panier, nomClient: client.nom, prixTotalFacture: (panier.prixTotalFacture + Number(article.prix))});
                         //disableBtn(e)
                         //uniqueId(panier, article, index, e)
-                        // alert(`${article.nom} a été ajouté au panier`);
+                        alert(`${article.nom} a été ajouté au panier`);
                       }}
                     ></ButtonComponent>
                   </div>
