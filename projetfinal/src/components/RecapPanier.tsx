@@ -33,7 +33,7 @@ function RecapPanier() {
 		status: "",
 
 	});
-	const [submitted, setSubmitted] = useState(false);
+
 	const [panier, setPanier] = useState<Panier>({nomClient:"", idAnimal: 0, listeLignes: [], prixTotalFacture: 0 });
 	const [client, setClient] = useState<Personne>({
 		// Why not new Person ?
@@ -319,7 +319,7 @@ function RecapPanier() {
 														type="radio"
 														name="radioNoLabel"
 														id="radioNoLabel1"
-														value=""
+														// value="1"
 														aria-label="..."
 														// onClick={(e) => handlePaymentRadios(e)}
 														// checked={true}
@@ -338,7 +338,7 @@ function RecapPanier() {
 														type="radio"
 														name="radioNoLabel"
 														id="radioNoLabel2"
-														value=""
+														// value="0"
 														aria-label="..."
 														// onClick={(e) => handlePaymentRadios(e)}
 														// checked={false}
@@ -356,7 +356,7 @@ function RecapPanier() {
 														type="radio"
 														name="radioNoLabel"
 														id="radioNoLabel3"
-														value=""
+														// value="0"
 														aria-label="..."
 														// onClick={(e) => handlePaymentRadios(e)}
 														// checked={false}
