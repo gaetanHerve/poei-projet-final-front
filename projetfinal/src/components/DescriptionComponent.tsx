@@ -23,7 +23,7 @@ function DescriptionComponent({ animal }) {
         "client",
         JSON.stringify(sessionStorage.getItem("utilisateur"))
       );
-      navigate("/panier");
+      navigate("/pagearticle");
     } else if (!connected) {
       navigate("/connexion");
     }
@@ -77,8 +77,8 @@ function DescriptionComponent({ animal }) {
           <div className="button-description-css">
             <ButtonComponent
               handleOnClick={handleClick}
-              text={"Ajouter au panier"}
-              lien={'/pagearticle'}
+              text={"Adopter"}
+              lien={""}
             ></ButtonComponent>
           </div>
         </div>
