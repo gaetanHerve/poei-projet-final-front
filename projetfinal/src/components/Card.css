@@ -4,6 +4,16 @@
   flex-wrap: wrap;
 }
 
+.card-secondary {
+  display: inline-block;
+  flex-wrap: wrap;
+}
+
+.carte-secondary {
+  background-color: white;
+  border-radius: 10px;
+}
+
 .carte,
 .card-image-animal {
   border-radius: 10px 10px 0 0;
