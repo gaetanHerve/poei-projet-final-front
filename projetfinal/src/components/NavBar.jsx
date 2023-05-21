@@ -30,8 +30,13 @@ function NavBar() {
       .then((data) => setAnimals(data));
   }, []);
 
-  const randomNumber =
-    Math.floor(Math.random() * Object.keys(animals).length) + 1;
+  const randomIndex = Math.floor(Math.random() * Object.keys(animals).length);
+  const randomAnimal = animals[randomIndex];
+
+  let randomNumber;
+  if (randomAnimal && randomAnimal.id) {
+    randomNumber = randomAnimal.id;
+  }
 
   return (
     <>
