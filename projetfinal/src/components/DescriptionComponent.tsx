@@ -78,7 +78,7 @@ function DescriptionComponent({ animal }) {
             <ButtonComponent
               handleOnClick={handleClick}
               text={"Ajouter au panier"}
-              lien={undefined}
+              lien={'/pagearticle'}
             ></ButtonComponent>
           </div>
         </div>
