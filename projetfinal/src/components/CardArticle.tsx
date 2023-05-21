@@ -62,6 +62,7 @@ function CardArticle({ articleList }) {
 
 		if (panier.listeLignes.length != 0) // evite la liste vide du premier click
 		{
+			console.log("length > 0");
 
 			oldPrixTot = panier.prixTotalFacture;
 
@@ -88,6 +89,7 @@ function CardArticle({ articleList }) {
 		}
 
 		else {
+			console.log("length == 0");
 
 			prixFinal = animal.prix;
 
@@ -211,7 +213,7 @@ function CardArticle({ articleList }) {
 											//handleOnClick={(e) => setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1 })}
 											handleOnClick={(e) => {
 												setLigne({ ...ligne, id: Number(article.id), nom: article.nom, prix: Number(article.prix), quantite: 1, prixLigne: Number(article.prix) });
-												setPanier({ ...panier, nomClient: client.nom });
+												setPanier({ ...panier, nomClient: client.nom, prixTotalFacture: (panier.prixTotalFacture + Number(article.prix))});
 												//disableBtn(e)
 												//uniqueId(panier, article, index, e)
 											}}
