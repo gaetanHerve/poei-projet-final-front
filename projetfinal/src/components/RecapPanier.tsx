@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Panier, Ligne } from './Panier';
 import React from 'react';
-import { Commande } from "./Commande";
+import ICommande from "../models/ICommande";
 import "./RecapPanier.css";
 import Personne from '../models/Personne';
 import { Animal } from '../models/Animal';
 
 function RecapPanier() {
+
+	const getCurrentDate = () => {
+		let d = new Date();
+		return `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+	}
+
 	const [animal, setAnimal] = useState<Animal>({  
+		// Why not new Animal() ?
 		id: 0,
 		nom: "",
 		race: "",
@@ -26,6 +33,7 @@ function RecapPanier() {
 	});
 	const [panier, setPanier] = useState<Panier>({nomClient:"", listeLignes: [], prixTotalFacture: 0 });
 	const [client, setClient] = useState<Personne>({
+		// Why not new Person ?
 		id: 0,
 		login: "",
 		password: "",
@@ -40,13 +48,14 @@ function RecapPanier() {
 	const [date, setDate] = useState("");
 	const [ligne, setLigne] = useState<Ligne>({ id: 0, nom: "", quantite: 0, prix: 0, prixLigne: 0 });
 
-	const [commande, setCommande] = useState<Commande>({
+	const [commande, setCommande] = useState<ICommande>({
 		id: 0,
-		id_client: 0,
+		idClient: 0,
+		idAnimal: 0,
 		infos: JSON.stringify(panier),
-		jour: "",
-		prix_total: 0,
-		facture: "",
+		jour: getCurrentDate(),
+		prixTotal: 0,
+		facture: false,
 	});
 
 	const handleDelete = (index, e) => {
@@ -69,11 +78,11 @@ function RecapPanier() {
 
 		setCommande({
 			...commande,
-			id_client: client.id,
+			idClient: client.id,
 			infos: JSON.stringify(panier),
-			jour: "",
-			prix_total: panier.prixTotalFacture,
-			facture: "",
+			jour: getCurrentDate(),
+			prixTotal: panier.prixTotalFacture,
+			facture: false,
 		})
 
 		fetch('http://localhost:8080/patoune-moi/commandes', requestOptions);
@@ -138,9 +147,7 @@ function RecapPanier() {
 			});
 		}
 
-		var d = new Date();
-		var actualDate = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
-		setDate(actualDate);
+		setDate(getCurrentDate());
 
 	}, [])
 
