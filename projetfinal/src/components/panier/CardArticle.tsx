@@ -101,17 +101,17 @@ function CardArticle({ articleList }) {
     navigate("/recappanier");
   }
 
-  const ligneDelete = (index) => {
-    let tmp = panier.listeLignes.filter((v, i) => i !== index);
-    setPanier({ ...panier, listeLignes: [...tmp] });
-  };
+  // const ligneDelete = (index) => {
+  //   let tmp = panier.listeLignes.filter((v, i) => i !== index);
+  //   setPanier({ ...panier, listeLignes: [...tmp] });
+  // };
 
-  const disableBtn = (e) => {
-    e.preventDefault();
-    console.log(e.target.id);
-    e.target.setAttribute("disabled", true);
-    e.target.style["background-color"] = "grey";
-  };
+  // const disableBtn = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.id);
+  //   e.target.setAttribute("disabled", true);
+  //   e.target.style["background-color"] = "grey";
+  // };
 
   useEffect(() => {
     var itemA = sessionStorage.getItem("animal");
