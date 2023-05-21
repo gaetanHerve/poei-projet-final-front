@@ -206,10 +206,11 @@ function RecapPanier() {
 
 		fetch('http://localhost:8080/patoune-moi/commandes', requestOptions).then((response) => {
 			if (response.ok) {
-				alert("Votre commande a bien été validée. Vous allez être redirigé vers la page d'accueil");
-				navigate('/');
+				alert("Votre commande a bien été validée. Vous allez être redirigé vers le récapitulatif de vos commandes");
+				navigate('/compte');
 			} else {
-
+				alert("Un problème est survenu durant la validation de votre commande. Vous allez être redirigé vers la page d'accueil");
+				navigate('/');
 			}
 		});
 	}
