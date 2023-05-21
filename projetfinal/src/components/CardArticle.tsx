@@ -39,6 +39,7 @@ function CardArticle({ articleList }) {
     nomClient: "",
     listeLignes: [],
     prixTotalFacture: 0,
+    idAnimal: 0
   });
   const [ligne, setLigne] = useState<Ligne>({
     id: 0,

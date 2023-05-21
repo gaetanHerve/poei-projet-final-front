@@ -33,7 +33,6 @@ function InfosCompte(props) {
   return (
     <>
       {personne && (
-        
         <form onSubmit={handleSubmit} className="compte-container-input">
           <div className="compte-container-name">
             <div className="compte-container-label-input">
@@ -66,6 +65,7 @@ function InfosCompte(props) {
                 type="text"
                 className="compte-input"
                 value={personne && personne.login}
+                readOnly
               />
             </div>
             <div className="compte-container-label-input">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./PageAccueil.css";
 import ICommande from "../models/ICommande";
 import { Panier } from "./Panier";
+import DetailCommande from "./DetailCommande";
 
 function HistoriqueCommandes({utilisateur}) {
   const emptyPanier = {listeLignes: [], prixTotalFacture: 0, nomClient: "", idAnimal: 0};
@@ -81,35 +82,7 @@ function HistoriqueCommandes({utilisateur}) {
             </tbody>
         </table>
         { details && details.listeLignes.length > 0 &&
-        <>
-        {/* <div className="card"> TODO=> make a card great again*/}
-        <h4>Commande du {details.jour}</h4>
-        <h4>Prix total commande : {details.prixTotalFacture}€</h4>
-        <table className="table table-striped">
-             
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>nom</th>
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
-            <th>Prix * quantité</th>
-          </tr>
-          </thead>
-          <tbody>    
-              {details.listeLignes.length > 0 && details.listeLignes.map((ligne, index) =>
-                  <tr key={index}>
-                      <td>{ ligne.id }</td>
-                      <td>{ ligne.nom }</td>
-                      <td>{ ligne.prix }€</td>
-                      <td>{ ligne.quantite }</td>
-                      <td>{ ligne.prix }€</td>
-                  </tr>
-              )}
-          </tbody>
-        </table>
-        {/* </div> */}
-        </>
+          <DetailCommande details={details}></DetailCommande>
         }
     </div>
     }
