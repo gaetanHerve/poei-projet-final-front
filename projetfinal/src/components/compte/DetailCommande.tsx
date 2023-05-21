@@ -18,7 +18,7 @@ const DetailCommande = (props) => {
       setAnimal(data);
     })
     .catch (error => console.log(error));
-  });
+  }, [details.idAnimal]);
 
   return (
     <>
@@ -31,6 +31,7 @@ const DetailCommande = (props) => {
               <img
                 src={`assets/${animal.urlImage}`}
                 className="card-image-animal"
+                alt={animal.nom}
               />
               <div className="card-container-text">
                 <h4 className="card-nom">{animal.nom}</h4>
@@ -39,6 +40,7 @@ const DetailCommande = (props) => {
                     <img
                       className="card-information-logo"
                       src="assets/gender.png"
+                      alt={animal.sexe}
                     />
                     <p className="card-information-text">{animal.sexe}</p>
                   </div>
@@ -47,6 +49,7 @@ const DetailCommande = (props) => {
                     <img
                       className="card-information-logo"
                       src="assets/calendar.png"
+                      alt="age"
                     />
                     <p className="card-information-text">{animal.age} an(s)</p>
                   </div>
@@ -54,6 +57,7 @@ const DetailCommande = (props) => {
                     <img
                       className="card-information-logo"
                       src="assets/prix.png"
+                      alt="devise"
                     />
                     <p className="card-information-text card-information-text-prix">
                       {animal.prix} €

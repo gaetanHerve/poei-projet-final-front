@@ -18,8 +18,7 @@ function HistoriqueCommandes({utilisateur}) {
         }
       }
     )
-    .then(data => {
-      console.log("commandes: ", data);
+    .then(data => {      
       setCommandes([...data]);
     });
   }, [utilisateur]);
