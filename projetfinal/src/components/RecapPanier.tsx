@@ -31,7 +31,7 @@ function RecapPanier() {
 		status: "",
 
 	});
-	const [panier, setPanier] = useState<Panier>({nomClient:"", listeLignes: [], prixTotalFacture: 0 });
+	const [panier, setPanier] = useState<Panier>({nomClient:"", idAnimal: 0, listeLignes: [], prixTotalFacture: 0 });
 	const [client, setClient] = useState<Personne>({
 		// Why not new Person ?
 		id: 0,
@@ -51,7 +51,6 @@ function RecapPanier() {
 	const [commande, setCommande] = useState<ICommande>({
 		id: 0,
 		idClient: 0,
-		idAnimal: 0,
 		infos: JSON.stringify(panier),
 		jour: getCurrentDate(),
 		prixTotal: 0,
@@ -79,7 +78,7 @@ function RecapPanier() {
 		setCommande({
 			...commande,
 			idClient: client.id,
-			infos: JSON.stringify(panier),
+			infos: JSON.stringify({...panier, idAnimal: animal.id}),
 			jour: getCurrentDate(),
 			prixTotal: panier.prixTotalFacture,
 			facture: false,
@@ -124,7 +123,7 @@ function RecapPanier() {
 			//console.log(JSON.parse(itemP));
 		}
 		else {
-			setPanier({nomClient:"", listeLignes: [], prixTotalFacture: 0 });
+			setPanier({nomClient:"", idAnimal: 0, listeLignes: [], prixTotalFacture: 0 });
 		}
 
 		var itemC = sessionStorage.getItem("utilisateur");
