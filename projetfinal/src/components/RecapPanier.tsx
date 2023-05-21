@@ -5,8 +5,10 @@ import ICommande from "../models/ICommande";
 import "./RecapPanier.css";
 import Personne from '../models/Personne';
 import { Animal } from '../models/Animal';
+import { useNavigate } from 'react-router-dom';
 
 function RecapPanier() {
+	const navigate = useNavigate();
 
 	const getCurrentDate = () => {
 		let d = new Date();
@@ -31,6 +33,7 @@ function RecapPanier() {
 		status: "",
 
 	});
+	const [submitted, setSubmitted] = useState(false);
 	const [panier, setPanier] = useState<Panier>({nomClient:"", idAnimal: 0, listeLignes: [], prixTotalFacture: 0 });
 	const [client, setClient] = useState<Personne>({
 		// Why not new Person ?
@@ -63,38 +66,10 @@ function RecapPanier() {
 		setPanier({ ...panier, listeLignes: [...tmp], prixTotalFacture: panier.prixTotalFacture - prixLigneSupp})
 	}
 
-	const requestOptions = {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(commande)
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		/* 		setPanier({
-								...panier, listeLignes: [...panier.listeLignes, { ...ligne }],
-						}) */
-
-		setCommande({
-			...commande,
-			idClient: client.id,
-			infos: JSON.stringify({...panier, idAnimal: animal.id}),
-			jour: getCurrentDate(),
-			prixTotal: panier.prixTotalFacture,
-			facture: false,
-		})
-
-		fetch('http://localhost:8080/patoune-moi/commandes', requestOptions);
-
-	}
-
 	useEffect(() => {
-
 		var itemA = sessionStorage.getItem("animal");
-		//console.log(itemA);
 		if (itemA) {
 			setAnimal(JSON.parse(itemA));
-			//console.log(JSON.parse(itemA));
 		}
 		else {
 			setAnimal({  
@@ -117,20 +92,16 @@ function RecapPanier() {
 		}
 
 		var itemP = sessionStorage.getItem("panier");
-		//console.log(itemP);
 		if (itemP) {
 			setPanier(JSON.parse(itemP));
-			//console.log(JSON.parse(itemP));
 		}
 		else {
 			setPanier({nomClient:"", idAnimal: 0, listeLignes: [], prixTotalFacture: 0 });
 		}
 
 		var itemC = sessionStorage.getItem("utilisateur");
-		//console.log(itemC);
 		if (itemC) {
 			setClient(JSON.parse(itemC));
-			//console.log(JSON.parse(itemC));
 		}
 		else {
 			setClient({
@@ -188,6 +159,56 @@ function RecapPanier() {
 		})
 		setPanier({ ...panier, listeLignes: [...tmp], prixTotalFacture: panier.prixTotalFacture - oldPrixLigne + newPrixLigne })
 		//console.log(tmp)
+	}
+
+	// const handlePaymentRadios = (e) => {
+	// 	let radioIds = ["radioNoLabel1", "radioNoLabel2", "radioNoLabel3"];
+		
+	// 	radioIds.forEach(radioId => {
+	// 		let radioElem = document.getElementById(radioId) as HTMLInputElement; 
+	// 		if (e.target.id !== radioId) {
+	// 			radioElem.checked = false;
+	// 		}
+	// 	});
+	// 	e.target.setAttribute('checked', true);
+	// 	console.log("clicked", e.target);
+	// }
+
+	const requestOptions = {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(commande)
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		setCommande({
+			...commande,
+			idClient: client.id,
+			infos: JSON.stringify({...panier, idAnimal: animal.id}),
+			jour: getCurrentDate(),
+			prixTotal: panier.prixTotalFacture,
+			facture: false,
+		})
+
+		requestOptions.body = JSON.stringify({
+			...commande,
+			idClient: client.id,
+			infos: JSON.stringify({...panier, idAnimal: animal.id}),
+			jour: getCurrentDate(),
+			prixTotal: panier.prixTotalFacture,
+			facture: false
+		});
+
+		fetch('http://localhost:8080/patoune-moi/commandes', requestOptions).then((response) => {
+			if (response.ok) {
+				alert("Votre commande a bien été validée. Vous allez être redirigé vers la page d'accueil");
+				navigate('/');
+			} else {
+
+			}
+		});
+		
 	}
 
 	return (
@@ -294,8 +315,15 @@ function RecapPanier() {
 										<form className="pb-3">
 											<div className="d-flex flex-row">
 												<div className="d-flex align-items-center pe-2">
-													<input className="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-														value="" aria-label="..." />
+													<input className="form-check-input"
+														type="radio"
+														name="radioNoLabel"
+														id="radioNoLabel1"
+														value=""
+														aria-label="..."
+														// onClick={(e) => handlePaymentRadios(e)}
+														// checked={true}
+														/>
 												</div>
 												<div className="rounded border d-flex w-100 p-3 align-items-center">
 													<p className="mb-0">
@@ -306,8 +334,15 @@ function RecapPanier() {
 											</div>
 											<div className="d-flex flex-row">
 												<div className="d-flex align-items-center pe-2">
-													<input className="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-														value="" aria-label="..." />
+													<input className="form-check-input"
+														type="radio"
+														name="radioNoLabel"
+														id="radioNoLabel2"
+														value=""
+														aria-label="..."
+														// onClick={(e) => handlePaymentRadios(e)}
+														// checked={false}
+														/>
 												</div>
 												<div className="rounded border d-flex w-100 p-3 align-items-center">
 													<p className="mb-0">
@@ -317,8 +352,15 @@ function RecapPanier() {
 											</div>
 											<div className="d-flex flex-row">
 												<div className="d-flex align-items-center pe-2">
-													<input className="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-														value="" aria-label="..." />
+													<input className="form-check-input"
+														type="radio"
+														name="radioNoLabel"
+														id="radioNoLabel3"
+														value=""
+														aria-label="..."
+														// onClick={(e) => handlePaymentRadios(e)}
+														// checked={false}
+														/>
 												</div>
 												<div className="rounded border d-flex w-100 p-3 align-items-center">
 													<p className="mb-0">
@@ -329,7 +371,9 @@ function RecapPanier() {
 											</div>
 										</form>
 										<br></br>
-										<input type="submit" value="Commander" className="button-default mb-3" />
+										<input type="submit"
+											value="Commander"
+											className="button-default mb-3"/>
 									</div>
 								</div>
 							</div>
