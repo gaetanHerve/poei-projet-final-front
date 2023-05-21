@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Personne from "../models/Personne";
-import { Animal } from "../models/Animal";
+import Personne from "../../models/Personne";
 
 function NavBar() {
   const [connected, setConnected] = useState(false);

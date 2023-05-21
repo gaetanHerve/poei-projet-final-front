@@ -1,7 +1,7 @@
 import React from "react";
 import CarouselComponent from "./CarouselComponent";
-import "./Entete.css";
-import ButtonComponent from "./ButtonComponent";
+import "../../styles/Entete.css";
+import ButtonComponent from "../utils/ButtonComponent";
 
 function Entete() {
   const tableauCarousel = [

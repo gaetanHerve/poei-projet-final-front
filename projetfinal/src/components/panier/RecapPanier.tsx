@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Panier, Ligne } from './Panier';
+import { Panier } from '../../models/Panier';
 import React from 'react';
-import ICommande from "../models/ICommande";
-import "./RecapPanier.css";
-import Personne from '../models/Personne';
-import { Animal } from '../models/Animal';
+import ICommande from "../../models/ICommande";
+import "../../styles/RecapPanier.css";
+import Personne from '../../models/Personne';
+import { Animal } from '../../models/Animal';
 import { useNavigate } from 'react-router-dom';
 
 function RecapPanier() {
@@ -49,8 +49,6 @@ function RecapPanier() {
 	});
 
 	const [date, setDate] = useState("");
-	const [ligne, setLigne] = useState<Ligne>({ id: 0, nom: "", quantite: 0, prix: 0, prixLigne: 0 });
-
 	const [commande, setCommande] = useState<ICommande>({
 		id: 0,
 		idClient: 0,

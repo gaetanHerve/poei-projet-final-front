@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Article } from "./Article";
+import { Article } from "../../models/Article";
 import CardArticle from "./CardArticle";
-import "./PageAccueil.css";
+import "../../styles/PageAccueil.css";
 
 function PageArticle() {
   const [articles, setArticles] = useState<Article[]>([]);

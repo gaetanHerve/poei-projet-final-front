@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Personne from "../models/Personne";
-import "./Compte.css";
+import Personne from "../../models/Personne";
+import "../../styles/Compte.css";
 import HistoriqueCommandes from "./HistoriqueCommandes";
 import InfosCompte from "./InfosCompte";
 

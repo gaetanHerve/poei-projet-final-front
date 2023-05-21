@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./PageAccueil.css";
-import "./Button.css";
-import Personne from '../models/Personne'
+import "../../styles/PageAccueil.css";
+import "../../styles/Button.css";
+import Personne from '../../models/Personne'
 import { useNavigate } from "react-router-dom";
 
 

@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from "./ButtonComponent";
-import "./Card.css";
+import ButtonComponent from "../utils/ButtonComponent";
+import "../../styles/Card.css";
 import { useState, useEffect } from "react";
-import { Panier, Ligne } from "./Panier";
-import { Animal } from "../models/Animal";
-import Personne from "../models/Personne";
+import { Panier, Ligne } from "../../models/Panier";
+import { Animal } from "../../models/Animal";
+import Personne from "../../models/Personne";
 
 function CardArticle({ articleList }) {
   const MAX_LENGTH = 70;

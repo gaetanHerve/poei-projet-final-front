@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Animal } from "../models/Animal";
-import { Ligne } from "./Panier";
-import "./Card.css";
+import { Animal } from "../../models/Animal";
+import { Ligne } from "../../models/Panier";
+import "../../styles/Card.css";
 
 const DetailCommande = (props) => {
   const MAX_LENGTH = 70;

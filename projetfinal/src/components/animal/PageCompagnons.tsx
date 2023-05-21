@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Animal } from "../models/Animal";
+import { Animal } from "../../models/Animal";
 import CardComponent from "./CardComponent";
-import "./PageCompagnons.css";
+import "../../styles/PageCompagnons.css";
 import TriComponent from "./TriComponent";
 
 function PageCompagnons() {
