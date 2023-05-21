@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./PageAccueil.css";
 import ICommande from "../models/ICommande";
-import { Panier, Ligne} from "./Panier";
+import { Panier } from "./Panier";
 
 function HistoriqueCommandes({utilisateur}) {
+  const emptyPanier = {listeLignes: [], prixTotalFacture: 0, nomClient: "", idAnimal: 0};
   const [commandes, setCommandes] = useState<ICommande[]>([]);
-  const [details, setDetails] = useState<Panier>({listeLignes: [], prixTotalFacture: 0});
+  const [details, setDetails] = useState<Panier>(emptyPanier);
+  const [detailsDisplayIndex, setDetailsDisplayIndex] = useState(-1);
 
   useEffect( () => {
     fetch(`http://localhost:8080/patoune-moi/commandes/findbyclient/${utilisateur.id}`).then(
@@ -21,14 +23,17 @@ function HistoriqueCommandes({utilisateur}) {
     });
   }, [utilisateur]);
   
-  const afficherDetails = (e, commande) => {
-    if (commande.infos && commande.infos != "") {
-      let commandeDetails = JSON.parse(commande.infos);
-      setDetails(commandeDetails)
-      setDetails({...commandeDetails, jour:commande.jour})
-      console.log(details);
+  const afficherDetails = (index, commande) => {
+    if (index === detailsDisplayIndex) {
+      setDetailsDisplayIndex(-1);
+      setDetails({...emptyPanier, jour: ""});
     } else {
-      setDetails({listeLignes: [], prixTotalFacture: 0});
+      setDetailsDisplayIndex(index);
+      if (commande.infos && commande.infos !== "") {
+        let commandeDetails = JSON.parse(commande.infos);
+        setDetails(commandeDetails)
+        setDetails({...commandeDetails, jour:commande.jour})
+      }
     }
   };
 
@@ -65,9 +70,9 @@ function HistoriqueCommandes({utilisateur}) {
                         <td><input
                           type="button"
                           className="compte-commands-display m-2"
-                          value={"Afficher"}
+                          value={(detailsDisplayIndex === index) ? "Masquer" : "Afficher"}
                           onClick={(e) => {
-                            afficherDetails(e, commande);
+                            afficherDetails(index, commande);
                           }}></input>
                         </td>
                         {/* <td>{ commande.infos }</td> */}

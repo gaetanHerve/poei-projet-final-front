@@ -4,7 +4,7 @@ export interface Panier {
     idAnimal: number;
     listeLignes: Array<Ligne>;
     prixTotalFacture: number;
-
+    jour?: string
 }
 
 export interface Ligne {
