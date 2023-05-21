@@ -1,6 +1,7 @@
 export interface Panier {
 
     nomClient:string;
+    idAnimal: number;
     listeLignes: Array<Ligne>;
     prixTotalFacture: number;
 
