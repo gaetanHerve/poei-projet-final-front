@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PageAccueil.css";
 import "./DescriptionComponent.css";
 import "./Button.css";
 import ButtonComponent from "./ButtonComponent";
 import { useNavigate } from "react-router-dom";
+import Personne from "../models/Personne";
 
 function DescriptionComponent({ animal }) {
+  const [connected, setConnected] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("utilisateur")) {
+      setConnected(true);
+    }
+  });
+
   const handleClick = () => {
-    sessionStorage.setItem("animal", JSON.stringify(animal));
-    sessionStorage.setItem(
-      "client",
-      JSON.stringify(sessionStorage.getItem("utilisateur"))
-    );
-    navigate("/panier");
+    if (connected) {
+      sessionStorage.setItem("animal", JSON.stringify(animal));
+      sessionStorage.setItem(
+        "client",
+        JSON.stringify(sessionStorage.getItem("utilisateur"))
+      );
+      navigate("/pagearticle");
+    } else if (!connected) {
+      navigate("/connexion");
+    }
   };
   return (
     <div className="description-card-container">
@@ -64,8 +77,8 @@ function DescriptionComponent({ animal }) {
           <div className="button-description-css">
             <ButtonComponent
               handleOnClick={handleClick}
-              text={"Ajouter au panier"}
-              lien={'/pagearticle'}
+              text={"Adopter"}
+              lien={""}
             ></ButtonComponent>
           </div>
         </div>
