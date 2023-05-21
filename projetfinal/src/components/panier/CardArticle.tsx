@@ -54,19 +54,11 @@ function CardArticle({ articleList }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("CLICK");
-
-    /* 		console.log(ligne);
-		
-				console.log("PANIER");
-		
-				console.log(panier); */
-
     var oldPrixTot = 0;
     var newPrixTot = 0;
     var prixFinal;
 
-    if (panier.listeLignes.length != 0) {
+    if (panier.listeLignes.length !== 0) {
       // evite la liste vide du premier click
       oldPrixTot = panier.prixTotalFacture;
 
@@ -103,14 +95,6 @@ function CardArticle({ articleList }) {
       listeLignes: [...panier.listeLignes, { ...ligne }],
       prixTotalFacture: panier.prixTotalFacture + prixFinal,
     });
-
-    console.log("LIGNE");
-
-    console.log(ligne);
-
-    console.log("PANIER");
-
-    console.log(panier);
   };
 
   function toPage() {
@@ -184,6 +168,7 @@ function CardArticle({ articleList }) {
                   src={`assets/${article.urlImage}`}
                   className="card-image-animal"
                   style={{ width: 250, height: 250 }}
+                  alt={article.name}
                 />
                 <div className="card-container-text">
                   <h4 className="card-nom">{article.nom}</h4>
@@ -192,6 +177,7 @@ function CardArticle({ articleList }) {
                       <img
                         className="card-information-logo"
                         src="assets/prix.png"
+                        alt="devise"
                       />
                       <p className="card-information-text card-information-text-prix">
                         {article.prix} €
@@ -219,7 +205,7 @@ function CardArticle({ articleList }) {
                         setPanier({ ...panier, nomClient: client.nom, prixTotalFacture: (panier.prixTotalFacture + Number(article.prix))});
                         //disableBtn(e)
                         //uniqueId(panier, article, index, e)
-                        alert(`${article.nom} a été ajouté au panier`);
+                        // alert(`${article.nom} a été ajouté au panier`);
                       }}
                     ></ButtonComponent>
                   </div>

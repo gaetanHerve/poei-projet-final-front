@@ -19,7 +19,6 @@ function RecapPanier() {
 			 + ('0' + (d.getMinutes())).slice(-2) + ':'
 			 + ('0' + (d.getSeconds())).slice(-2);
 		return dateString;
-		// return `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${'0' + (d.getSeconds()).slice(-2)}`;
 	}
 
 	const [animal, setAnimal] = useState<Animal>({  
@@ -54,6 +53,20 @@ function RecapPanier() {
 			telephone: "",
 			informations: ""},
 	});
+
+	// check if panier.prixTotalFacture is ok
+	useEffect(() => {
+		// check theoretical price
+		let wantedPrice = 0;
+		wantedPrice += animal.prix;
+		panier.listeLignes.forEach(ligne => {
+			wantedPrice += ligne.prix * ligne.quantite;
+		})
+		console.log("wantedPrice: ", wantedPrice);
+		if (wantedPrice !== panier.prixTotalFacture) {
+			setPanier({...panier, prixTotalFacture: wantedPrice});
+		}
+	}, [animal.prix, panier]);
 
 	const [date, setDate] = useState("");
 	const [commande, setCommande] = useState<ICommande>({
@@ -166,19 +179,6 @@ function RecapPanier() {
 		//console.log(tmp)
 	}
 
-	// const handlePaymentRadios = (e) => {
-	// 	let radioIds = ["radioNoLabel1", "radioNoLabel2", "radioNoLabel3"];
-		
-	// 	radioIds.forEach(radioId => {
-	// 		let radioElem = document.getElementById(radioId) as HTMLInputElement; 
-	// 		if (e.target.id !== radioId) {
-	// 			radioElem.checked = false;
-	// 		}
-	// 	});
-	// 	e.target.setAttribute('checked', true);
-	// 	console.log("clicked", e.target);
-	// }
-
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -213,7 +213,6 @@ function RecapPanier() {
 
 			}
 		});
-		
 	}
 
 	return (
