@@ -1,0 +1,61 @@
+.tri-container {
+  /* background-color: var(--color-text-description); */
+  padding: 10px 50px;
+  margin-bottom: 50px;
+  /* color: white; */
+}
+
+.tri-container-button {
+  border: var(--color-text-description) thick double;
+  border-radius: 5px;
+  height: 120px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tri-button-radio-label {
+  margin: 0px 15px;
+}
+
+.tri-button-radio-p {
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: var(--colorFistGreen);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: none;
+}
+
+.tri-button-radio:checked + .tri-button-radio-p {
+  background-color: var(--colorSecondeGreen) !important;
+}
+
+.tri-button-radio {
+  display: none;
+}
+
+.tri-card {
+  width: 85%;
+  margin: 70px auto;
+}
+
+.tri-button-number {
+  padding: 10px 20px;
+  border: 2px solid var(--colorFistGreen) !important;
+  border-radius: 20px;
+  border: none;
+  color: black;
+  font-size: 1.2rem;
+  box-shadow: none;
+  margin: 0 15px;
+  width: 100px;
+}
+
+.tri-prix-label {
+  font-weight: bold;
+}

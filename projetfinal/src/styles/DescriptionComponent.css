@@ -1,0 +1,110 @@
+.description-container {
+  background-color: var(--colorBackground);
+  border: thick double var(--color-text-description);
+  border-radius: 5px;
+  padding: 24px;
+  margin: 15px;
+  width: 40vh;
+  box-shadow: 3px 2px 4px var(--color-text-description);
+  margin-bottom: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-title {
+  margin: auto 0;
+  font-size: 1.5rem;
+}
+
+.decription-prix {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.description-logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.decrip-texte {
+  display: flex;
+  flex-direction: column;
+}
+
+.Container-unprice {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-css {
+  margin-top: 10px;
+  width: 30px;
+}
+
+.texte-css {
+  margin-top: 10px;
+  height: 30px;
+}
+
+.logo-css-price {
+  margin-right: 30px;
+  margin-top: 10px;
+  width: 30px;
+}
+
+.button-description-css {
+  margin-top: 40px;
+}
+
+.frame-general-css {
+  display: flex;
+  padding: 5px;
+  background-color: var(--color-title);
+  border-radius: 20px;
+  border: 5px;
+  color: var(--colorBackground);
+  width: 40vh;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 3px 4px 4px var(--color-text-description);
+}
+
+.frame-general-css-title {
+  background-color: var(--color-title);
+  border-radius: 20px;
+  border: 5px;
+  color: var(--colorBackground);
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.frame-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-card-container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 3%;
+  margin-top: 2%;
+}
+
+.texte-css-prix {
+  font-weight: bold;
+  font-size: x-large;
+  color: var(--colorFistGreen);
+}

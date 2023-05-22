@@ -1,0 +1,15 @@
+.colone-input{
+    display: flex;
+}
+
+.input-width{
+    width: 30%;
+    text-align: center;
+    border: 0;
+}
+
+.price-width{
+    display: flex;
+    width: 200%;
+    text-align: center;
+}
