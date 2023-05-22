@@ -1,5 +1,5 @@
 import React from "react";
-import "./CompagnyDescription.css";
+import "../../styles/CompagnyDescription.css";
 
 function CompagnyDescription() {
   return (

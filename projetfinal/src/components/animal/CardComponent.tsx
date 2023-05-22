@@ -1,6 +1,6 @@
 import React from "react";
-import ButtonComponent from "./ButtonComponent";
-import "./Card.css";
+import ButtonComponent from "../utils/ButtonComponent";
+import "../../styles/Card.css";
 
 function CardComponent({ animalList }) {
   const MAX_LENGTH = 70;

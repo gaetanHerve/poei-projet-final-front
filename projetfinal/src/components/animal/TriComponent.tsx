@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import CardComponent from "./CardComponent";
-import "./Tri.css";
+import "../../styles/Tri.css";
 
 function TriComponent({ tableauAnimal }) {
   const [filters, setFilters] = useState({

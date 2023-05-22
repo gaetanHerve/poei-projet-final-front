@@ -1,8 +1,8 @@
 import React from "react";
-import ButtonComponent from "./ButtonComponent";
-import FooterLink from "./FooterLink";
-import "./Footer.css";
-import "./Button.css";
+import ButtonComponent from "../utils/ButtonComponent";
+import FooterLink from "../utils/FooterLink";
+import "../../styles/Footer.css";
+import "../../styles/Button.css";
 
 function Footer() {
   return (

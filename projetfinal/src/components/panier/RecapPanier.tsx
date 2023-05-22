@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Panier, Ligne } from './Panier';
+import { Panier } from '../../models/Panier';
 import React from 'react';
-import ICommande from "../models/ICommande";
-import "./RecapPanier.css";
-import Personne from '../models/Personne';
-import { Animal } from '../models/Animal';
+import ICommande from "../../models/ICommande";
+import "../../styles/RecapPanier.css";
+import Personne from '../../models/Personne';
+import { Animal } from '../../models/Animal';
 import { useNavigate } from 'react-router-dom';
 
 function RecapPanier() {
@@ -12,7 +12,13 @@ function RecapPanier() {
 
 	const getCurrentDate = () => {
 		let d = new Date();
-		return `${d.getDate()}/${(d.getMonth() + 1)}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+		let dateString = ('0' + d.getDate()).slice(-2) + '/'
+             + ('0' + (d.getMonth()+1)).slice(-2) + '/'
+             + d.getFullYear() + ' à '
+			 + ('0' + (d.getHours())).slice(-2) + ':'
+			 + ('0' + (d.getMinutes())).slice(-2) + ':'
+			 + ('0' + (d.getSeconds())).slice(-2);
+		return dateString;
 	}
 
 	const [animal, setAnimal] = useState<Animal>({  
@@ -48,9 +54,20 @@ function RecapPanier() {
 			informations: ""},
 	});
 
-	const [date, setDate] = useState("");
-	const [ligne, setLigne] = useState<Ligne>({ id: 0, nom: "", quantite: 0, prix: 0, prixLigne: 0 });
+	// check if panier.prixTotalFacture is ok
+	useEffect(() => {
+		// check theoretical price
+		let wantedPrice = 0;
+		wantedPrice += animal.prix;
+		panier.listeLignes.forEach(ligne => {
+			wantedPrice += ligne.prix * ligne.quantite;
+		});
+		if (wantedPrice !== panier.prixTotalFacture) {
+			setPanier({...panier, prixTotalFacture: wantedPrice});
+		}
+	}, [animal.prix, panier]);
 
+	const [date, setDate] = useState("");
 	const [commande, setCommande] = useState<ICommande>({
 		id: 0,
 		idClient: 0,
@@ -161,19 +178,6 @@ function RecapPanier() {
 		//console.log(tmp)
 	}
 
-	// const handlePaymentRadios = (e) => {
-	// 	let radioIds = ["radioNoLabel1", "radioNoLabel2", "radioNoLabel3"];
-		
-	// 	radioIds.forEach(radioId => {
-	// 		let radioElem = document.getElementById(radioId) as HTMLInputElement; 
-	// 		if (e.target.id !== radioId) {
-	// 			radioElem.checked = false;
-	// 		}
-	// 	});
-	// 	e.target.setAttribute('checked', true);
-	// 	console.log("clicked", e.target);
-	// }
-
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -202,13 +206,13 @@ function RecapPanier() {
 
 		fetch('http://localhost:8080/patoune-moi/commandes', requestOptions).then((response) => {
 			if (response.ok) {
-				alert("Votre commande a bien été validée. Vous allez être redirigé vers la page d'accueil");
-				navigate('/');
+				alert("Votre commande a bien été validée. Vous allez être redirigé vers le récapitulatif de vos commandes");
+				navigate('/compte');
 			} else {
-
+				alert("Un problème est survenu durant la validation de votre commande. Vous allez être redirigé vers la page d'accueil");
+				navigate('/');
 			}
 		});
-		
 	}
 
 	return (

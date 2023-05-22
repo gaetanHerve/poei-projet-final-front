@@ -1,20 +1,19 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PageTest from "./components/PageTest";
-import NavBar from "./components/NavBar";
-import TestNavbarFooter from "./components/TestNavbarFooter";
-import Footer from "./components/Footer";
-import PageAccueil from "./components/PageAccueil";
-import PageConnexion from "./components/PageConnexion";
-import PageCompagnons from "./components/PageCompagnons";
-import PageVueCompagnon from "./components/PageVueCompagnon";
-import Compte from "./components/Compte";
-import PageCreationUtilisateur from "./components/PageCreationUtilisateur";
-import PageinfosCompte from "./components/PageinfosCompte";
-import RecapPanier from "./components/RecapPanier";
-import PageArticle from "./components/PageArticle";
-import PageContact from "./components/PageContact";
+import PageTest from "./components/tests/PageTest";
+import NavBar from "./components/main/NavBar";
+import TestNavbarFooter from "./components/tests/TestNavbarFooter";
+import Footer from "./components/main/Footer";
+import PageAccueil from "./components/main/PageAccueil";
+import PageConnexion from "./components/compte/PageConnexion";
+import PageCompagnons from "./components/animal/PageCompagnons";
+import PageVueCompagnon from "./components/animal/PageVueCompagnon";
+import Compte from "./components/compte/Compte";
+import PageCreationUtilisateur from "./components/compte/PageCreationUtilisateur";
+import RecapPanier from "./components/panier/RecapPanier";
+import PageArticle from "./components/panier/PageArticle";
+import PageContact from "./components/main/PageContact";
 
 
 function App() {

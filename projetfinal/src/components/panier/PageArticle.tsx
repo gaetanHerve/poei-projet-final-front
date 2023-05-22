@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Article } from "./Article";
+import { Article } from "../../models/Article";
 import CardArticle from "./CardArticle";
-import "./PageAccueil.css";
+import "../../styles/PageAccueil.css";
 
 function PageArticle() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -18,7 +18,9 @@ function PageArticle() {
       <div className="pageaccueil-titre-container">
         <h1 className="pageaccueil-titre">Ça pourrait vous interesser ...</h1>
       </div>
+      { articleList.length > 0 &&
       <CardArticle articleList={articleList}></CardArticle>
+      }
     </div>
   );
 }

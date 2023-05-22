@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./PageAccueil.css";
-import "./DescriptionComponent.css";
-import "./Button.css";
-import ButtonComponent from "./ButtonComponent";
+import "../../styles/PageAccueil.css";
+import "../../styles/DescriptionComponent.css";
+import "../../styles/Button.css";
+import ButtonComponent from "../utils/ButtonComponent";
 import { useNavigate } from "react-router-dom";
-import Personne from "../models/Personne";
+import Personne from "../../models/Personne";
 
 function DescriptionComponent({ animal }) {
   const [connected, setConnected] = useState(false);

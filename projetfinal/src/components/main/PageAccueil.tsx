@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Animal } from "../models/Animal";
+import { Animal } from "../../models/Animal";
 import Entete from "./Entete";
-import CardComponent from "./CardComponent";
-import "./PageAccueil.css";
+import CardComponent from "../animal/CardComponent";
+import "../../styles/PageAccueil.css";
 import CompagnyDescription from "./CompagnyDescription";
 
 function PageAccueil() {

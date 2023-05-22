@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Personne from "../models/Personne";
-import "./Compte.css";
+import Personne from "../../models/Personne";
+import "../../styles/Compte.css";
 
 function InfosCompte(props) {
   const [personne, setPersonne] = useState<Personne>(props.personne);

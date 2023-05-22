@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./PageAccueil.css";
-import ICommande from "../models/ICommande";
-import { Panier } from "./Panier";
+import "../../styles/PageAccueil.css";
+import ICommande from "../../models/ICommande";
+import { Panier } from "../../models/Panier";
 import DetailCommande from "./DetailCommande";
 
 function HistoriqueCommandes({utilisateur}) {
@@ -18,8 +18,7 @@ function HistoriqueCommandes({utilisateur}) {
         }
       }
     )
-    .then(data => {
-      console.log("commandes: ", data);
+    .then(data => {      
       setCommandes([...data]);
     });
   }, [utilisateur]);

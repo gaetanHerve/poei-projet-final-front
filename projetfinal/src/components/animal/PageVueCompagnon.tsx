@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Animal } from "../models/Animal";
+import { Animal } from "../../models/Animal";
 import DescriptionComponent from "./DescriptionComponent";
-import "./PageAccueil.css";
-import "./PageVueCompagnon.css";
+import "../../styles/PageAccueil.css";
+import "../../styles/PageVueCompagnon.css";
 import { useParams } from "react-router-dom";
 
 function PageVueCompagnon() {
